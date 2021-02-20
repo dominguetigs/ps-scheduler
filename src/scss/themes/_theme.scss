@@ -1,0 +1,85 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$custom-primary-color: (
+  50: #e7e7ea,
+  100: #c3c4cb,
+  200: #9b9da9,
+  300: #737687,
+  400: #55586d,
+  500: #373b53,
+  600: #31354c,
+  700: #2a2d42,
+  800: #232639,
+  900: #161929,
+  A100: #6d7fff,
+  A200: #3a52ff,
+  A400: #0726ff,
+  A700: #001eec,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #ffffff,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+$custom-accent-color: (
+  50: #eeedfd,
+  100: #d5d1fa,
+  200: #b9b3f6,
+  300: #9c94f2,
+  400: #877df0,
+  500: #7266ed,
+  600: #6a5eeb,
+  700: #5f53e8,
+  800: #5549e5,
+  900: #4238e0,
+  A100: #ffffff,
+  A200: #f7f6ff,
+  A400: #c7c3ff,
+  A700: #afaaff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$ps-scheduler-primary: mat-palette($custom-primary-color);
+$ps-scheduler-accent: mat-palette($custom-accent-color, 700, 600, 800);
+$ps-scheduler-warn: mat-palette($mat-red);
+
+$ps-scheduler-theme: mat-light-theme(
+  (
+    color: (
+      primary: $ps-scheduler-primary,
+      accent: $ps-scheduler-accent,
+      warn: $ps-scheduler-warn,
+    ),
+  )
+);
+
+@include angular-material-theme($ps-scheduler-theme);
