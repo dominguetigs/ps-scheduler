@@ -5,5 +5,8 @@ mat-sidenav {
 }
 
 .mat-sidenav {
-  width: 220px;
+  min-width: 70px;
+  width: auto;
+
+  background-color: #373b53;
 }

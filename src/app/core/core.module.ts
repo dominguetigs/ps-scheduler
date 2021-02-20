@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -10,7 +11,7 @@ import { SidenavService } from './sidenav/sidenav.service';
 
 @NgModule({
   declarations: [HeaderComponent, MenuListItemComponent, SidenavComponent],
-  imports: [SharedModule],
+  imports: [RouterModule, SharedModule],
   exports: [HeaderComponent, MenuListItemComponent, SidenavComponent],
   providers: [SidenavService],
 })

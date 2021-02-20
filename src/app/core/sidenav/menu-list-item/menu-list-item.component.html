@@ -1,13 +1,16 @@
 <a
   mat-list-item
-  [ngStyle]="{ 'padding-left': depth * 12 + 'px' }"
   (click)="onItemSelected(item)"
   [ngClass]="{ active: item.route ? router.isActive(item.route, true) : false, expanded: expanded }"
+  fxLayoutAlign="start center"
+  fxLayoutAlign.gt-sm="center center"
   class="menu-list-item"
 >
-  <mat-icon class="route-icon">{{ item.iconName }}</mat-icon>
-  <span class="menu-item-text">{{ item.displayName }}</span>
+  <mat-icon class="route-icon" fxHide fxShow.lt-md>{{ item.iconName }}</mat-icon>
+  <mat-icon class="route-icon" [matTooltip]="item.displayName" matTooltipPosition="right" fxHide fxShow.gt-sm>{{
+    item.iconName
+  }}</mat-icon>
+  <span class="menu-item-text" [ngStyle]="{ 'margin-left': '10px', width: '150px' }" fxHide fxShow.lt-md>{{
+    item.displayName
+  }}</span>
 </a>
-<div *ngIf="expanded">
-  <app-menu-list-item *ngFor="let child of item.children" [item]="child" [depth]="depth + 1"></app-menu-list-item>
-</div>
