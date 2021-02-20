@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from './shared/shared.module';
+import { MenuListItemComponent } from './template/menu-list-item/menu-list-item.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MenuListItemComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent],
