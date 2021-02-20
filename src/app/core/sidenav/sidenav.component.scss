@@ -1,4 +1,7 @@
-mat-sidenav-container,
+mat-sidenav-container {
+  height: calc(100% - 70px);
+}
+
 mat-sidenav-content,
 mat-sidenav {
   height: 100%;
@@ -9,4 +12,12 @@ mat-sidenav {
   width: auto;
 
   background-color: #373b53;
+
+  .sidenav-list {
+    height: 100%;
+
+    .mat-divider {
+      background-color: #969cba;
+    }
+  }
 }
