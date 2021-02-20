@@ -4,6 +4,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 import { FormsModule } from '@angular/forms';
 
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -25,6 +26,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   imports: [
     FormsModule,
 
+    MatBadgeModule,
     MatCardModule,
     MatDividerModule,
     MatExpansionModule,
@@ -45,6 +47,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   exports: [
     FormsModule,
 
+    MatBadgeModule,
     MatCardModule,
     MatDividerModule,
     MatExpansionModule,
