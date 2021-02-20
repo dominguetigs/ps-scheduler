@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { MatSidenav } from '@angular/material/sidenav';
+import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -18,8 +18,9 @@ export class SidenavComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav')
   sidenav: MatSidenav;
 
-  opened: boolean = true;
+  mode: MatDrawerMode;
   menu: NavItem[] = menu;
+  opened: boolean = true;
 
   private _unsubscribeAll: Subject<any>;
 
@@ -52,8 +53,10 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   private handleMediaChange(mediaChange: MediaChange) {
     if (this._media.isActive('lt-md')) {
+      this.mode = 'over';
       this.opened = false;
     } else {
+      this.mode = 'side';
       this.opened = true;
     }
   }

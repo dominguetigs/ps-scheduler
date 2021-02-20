@@ -1,5 +1,5 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" [opened]="opened">
+  <mat-sidenav #sidenav [mode]="mode" [opened]="opened">
     <mat-nav-list class="sidenav-list" fxLayout="column">
       <app-menu-list-item *ngFor="let item of menu" [item]="item"></app-menu-list-item>
       <span fxFlex="0 1 100%"></span>
