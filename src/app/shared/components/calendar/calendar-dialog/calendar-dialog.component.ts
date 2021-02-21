@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { CalendarEvent } from 'angular-calendar';
 
-import { CustomCalendar } from '../custom-calendar';
+import { CustomCalendar } from '../calendar.model';
 
 @Component({
   selector: 'app-calendar-dialog',

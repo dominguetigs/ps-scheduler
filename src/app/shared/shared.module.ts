@@ -10,11 +10,11 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { CalendarDialogComponent } from './components/custom-calendar/calendar-dialog/calendar-dialog.component';
-import { CustomCalendarComponent } from './components/custom-calendar/custom-calendar.component';
+import { CalendarDialogComponent } from './components/calendar/calendar-dialog/calendar-dialog.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 @NgModule({
-  declarations: [CalendarDialogComponent, CustomCalendarComponent],
+  declarations: [CalendarDialogComponent, CalendarComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -43,7 +43,7 @@ import { CustomCalendarComponent } from './components/custom-calendar/custom-cal
     FlexLayoutModule,
 
     CalendarDialogComponent,
-    CustomCalendarComponent,
+    CalendarComponent,
   ],
 })
 export class SharedModule {}

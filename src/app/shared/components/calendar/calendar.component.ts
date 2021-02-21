@@ -6,7 +6,7 @@ import { CalendarEvent } from 'angular-calendar';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { CustomCalendar } from './custom-calendar';
+import { CustomCalendar } from './calendar.model';
 
 import { CalendarDialogComponent } from './calendar-dialog/calendar-dialog.component';
 
@@ -18,7 +18,7 @@ import { CALENDAR_VIEWS } from './calendar-views.constant';
   templateUrl: './custom-calendar.component.html',
   styleUrls: ['./custom-calendar.component.scss'],
 })
-export class CustomCalendarComponent implements OnInit, OnDestroy {
+export class CalendarComponent implements OnInit, OnDestroy {
   @Input() events: CalendarEvent[] = [];
 
   calendar: CustomCalendar;
