@@ -42,24 +42,6 @@ export class SchedulerComponent {
       },
     },
     {
-      start: startOfDay(new Date()),
-      title: 'Event 2',
-      color: colors.yellow,
-      meta: {
-        message: '',
-      },
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'Event 3',
-      color: colors.blue,
-      allDay: true,
-      meta: {
-        message: '',
-      },
-    },
-    {
       start: addHours(startOfDay(new Date()), 2),
       end: addHours(new Date(), 2),
       title: 'Event 4',

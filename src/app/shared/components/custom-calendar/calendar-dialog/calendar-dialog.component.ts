@@ -16,7 +16,7 @@ export class CalendarDialogComponent {
   isEditMode: boolean;
 
   constructor(
-    public dialogRef: MatDialogRef<CalendarDialogComponent>,
+    private _dialogRef: MatDialogRef<CalendarDialogComponent>,
     @Inject(MAT_DIALOG_DATA) data: { action: string; data: CalendarEvent; calendarInstance: CustomCalendar }
   ) {
     this.isEditMode = !!data?.data;
@@ -28,5 +28,15 @@ export class CalendarDialogComponent {
       data.calendarInstance.addEvent();
       this.dialogData = data.calendarInstance.events[data.calendarInstance.events.length - 1];
     }
+  }
+
+  // -----------------------------------------------------------------------------------------------------------------
+  // Public Methods
+  // -----------------------------------------------------------------------------------------------------------------
+
+  deleteEvent(): void {
+    this.calendarInstance.deleteEvent(this.dialogData);
+    this.calendarInstance.refresh.next();
+    this._dialogRef.close();
   }
 }
