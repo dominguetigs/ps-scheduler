@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { endOfDay, startOfDay } from 'date-fns';
+import { CalendarEvent } from 'angular-calendar';
 
 import { CustomCalendar } from '../custom-calendar';
 
@@ -15,31 +15,18 @@ export class CalendarDialogComponent {
   dialogData: any;
   isEditMode: boolean;
 
-  constructor(private _dialogRef: MatDialogRef<CalendarDialogComponent>, @Inject(MAT_DIALOG_DATA) data: any) {
+  constructor(
+    public dialogRef: MatDialogRef<CalendarDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) data: { action: string; data: CalendarEvent; calendarInstance: CustomCalendar }
+  ) {
     this.isEditMode = !!data?.data;
     this.calendarInstance = data?.calendarInstance;
-    this.dialogData = data?.data ?? {
-      title: 'New event',
-      start: startOfDay(new Date()),
-      end: endOfDay(new Date()),
-      // color: 'colors.red',
-      draggable: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-    };
-  }
 
-  // -----------------------------------------------------------------------------------------------------------------
-  // Public Methods
-  // -----------------------------------------------------------------------------------------------------------------
-
-  save() {
-    this._dialogRef.close();
-  }
-
-  close() {
-    this._dialogRef.close();
+    if (data?.data) {
+      this.dialogData = data.data;
+    } else {
+      data.calendarInstance.addEvent();
+      this.dialogData = data.calendarInstance.events[data.calendarInstance.events.length - 1];
+    }
   }
 }

@@ -29,7 +29,7 @@ export class SchedulerComponent {
     {
       start: subDays(startOfDay(new Date()), 1),
       end: addDays(new Date(), 1),
-      title: 'A 3 day event',
+      title: 'Event 1',
       color: colors.red,
       allDay: true,
       resizable: {
@@ -37,29 +37,41 @@ export class SchedulerComponent {
         afterEnd: true,
       },
       draggable: true,
+      meta: {
+        message: '',
+      },
     },
     {
       start: startOfDay(new Date()),
-      title: 'An event with no end date',
+      title: 'Event 2',
       color: colors.yellow,
+      meta: {
+        message: '',
+      },
     },
     {
       start: subDays(endOfMonth(new Date()), 3),
       end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
+      title: 'Event 3',
       color: colors.blue,
       allDay: true,
+      meta: {
+        message: '',
+      },
     },
     {
       start: addHours(startOfDay(new Date()), 2),
       end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
+      title: 'Event 4',
       color: colors.yellow,
       resizable: {
         beforeStart: true,
         afterEnd: true,
       },
       draggable: true,
+      meta: {
+        message: '',
+      },
     },
   ];
 

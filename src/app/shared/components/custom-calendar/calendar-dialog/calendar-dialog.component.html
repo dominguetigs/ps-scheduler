@@ -1,24 +1,15 @@
 <mat-dialog-content>
-  <div fxLayout="column" fxLayoutGap="14px">
-    <div fxLayout fxLayoutAlign="space-betwwen center">
-      <mat-form-field>
+  <div fxLayout="column">
+    <div fxLayout fxLayoutAlign="space-betwwen center" fxLayoutGap="14px">
+      <mat-form-field fxFlex="0 1 50%">
         <mat-label>Event title</mat-label>
         <input matInput type="text" [(ngModel)]="dialogData.title" (keyup)="calendarInstance.refresh.next()" />
-        <button
-          mat-button
-          *ngIf="dialogData.title"
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="dialogData.title = ''"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
       </mat-form-field>
+      <span fxFlex="0 1 auto"></span>
       <div style="width: 10px; height: 10px; border-radius: 5px; background-color: red"></div>
     </div>
     <div fxLayout fxLayoutAlign="center center" fxLayoutGap="14px">
-      <!-- <mat-form-field>
+      <mat-form-field fxFlex>
         <mat-label>Starts at</mat-label>
         <input
           class="form-control"
@@ -35,41 +26,43 @@
           placeholder="Not set"
         />
       </mat-form-field>
-      <input
-        class="form-control"
-        type="text"
-        matInput
-        mwlFlatpickr
-        [(ngModel)]="dialogData.end"
-        (ngModelChange)="calendarInstance.refresh.next()"
-        [altInput]="true"
-        [convertModelValue]="true"
-        [enableTime]="true"
-        dateFormat="Y-m-dTH:i"
-        altFormat="F j, Y H:i"
-        placeholder="Not set"
-      /> -->
-      <input
-        class="form-control"
-        type="text"
-        mwlFlatpickr
-        [(ngModel)]="dialogData.end"
-        (ngModelChange)="calendarInstance.refresh.next()"
-        [altInput]="true"
-        [convertModelValue]="true"
-        [enableTime]="true"
-        dateFormat="Y-m-dTH:i"
-        altFormat="F j, Y H:i"
-        placeholder="Not set"
-      />
+      <mat-form-field fxFlex>
+        <mat-label>Ends at</mat-label>
+        <input
+          class="form-control"
+          type="text"
+          matInput
+          mwlFlatpickr
+          [(ngModel)]="dialogData.end"
+          (ngModelChange)="calendarInstance.refresh.next()"
+          [altInput]="true"
+          [convertModelValue]="true"
+          [enableTime]="true"
+          dateFormat="Y-m-dTH:i"
+          altFormat="F j, Y H:i"
+          placeholder="Not set"
+        />
+      </mat-form-field>
     </div>
+    <mat-form-field>
+      <mat-label>Message</mat-label>
+      <textarea
+        matInput
+        placeholder="Message"
+        [(ngModel)]="dialogData.meta.message"
+        (ngModelChange)="calendarInstance.refresh.next()"
+      >
+      </textarea>
+    </mat-form-field>
   </div>
   <div fxLayout fxLayoutAlign="space-between center">
-    <mat-icon style="font-size: 16pt">delete</mat-icon>
+    <button mat-icon-button aria-label="Delete button" mat-dialog-close color="warn">
+      <mat-icon style="font-size: 16pt">delete</mat-icon>
+    </button>
     <span fxFlex="0 1 auto"></span>
     <div fxLayout fxLayoutGap="14px">
-      <button mat-flat-button (click)="close()">Close</button>
-      <button mat-flat-button color="primary" (click)="save()">Save</button>
+      <button mat-flat-button mat-dialog-close>Close</button>
+      <button mat-flat-button color="primary" mat-dialog-close>Save</button>
     </div>
   </div>
 </mat-dialog-content>

@@ -11,7 +11,6 @@ import { CoreModule } from './core/core.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule, CoreModule],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

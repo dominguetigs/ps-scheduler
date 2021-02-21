@@ -76,6 +76,9 @@ export class CustomCalendar {
           beforeStart: true,
           afterEnd: true,
         },
+        meta: {
+          message: '',
+        },
       },
     ];
   }
