@@ -8,14 +8,24 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { FlatpickrModule } from 'angularx-flatpickr';
 
+import { ToastrModule } from 'ngx-toastr';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { CalendarDialogComponent } from './components/calendar/calendar-dialog/calendar-dialog.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { ChipsInputComponent } from './components/chips-input/chips-input.component';
 import { ColorPickerComponent } from './components/color-picker/color-picker.component';
+import { CSVExtractorComponent } from './components/csv-extractor/csv-extractor.component';
 
 @NgModule({
-  declarations: [CalendarDialogComponent, CalendarComponent, ColorPickerComponent],
+  declarations: [
+    CalendarDialogComponent,
+    CalendarComponent,
+    ChipsInputComponent,
+    ColorPickerComponent,
+    CSVExtractorComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -29,6 +39,8 @@ import { ColorPickerComponent } from './components/color-picker/color-picker.com
       useFactory: adapterFactory,
     }),
 
+    ToastrModule.forRoot(),
+
     FlexLayoutModule,
   ],
   exports: [
@@ -41,11 +53,15 @@ import { ColorPickerComponent } from './components/color-picker/color-picker.com
     FlatpickrModule,
     CalendarModule,
 
+    ToastrModule,
+
     FlexLayoutModule,
 
     CalendarDialogComponent,
     CalendarComponent,
+    ChipsInputComponent,
     ColorPickerComponent,
+    CSVExtractorComponent,
   ],
 })
 export class SharedModule {}

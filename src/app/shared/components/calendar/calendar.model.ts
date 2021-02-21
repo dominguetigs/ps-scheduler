@@ -2,6 +2,7 @@ import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, Cal
 import { endOfDay, isSameDay, isSameMonth, startOfDay } from 'date-fns';
 
 import { ReplaySubject, Subject } from 'rxjs';
+
 import { PREDEFINED_COLORS } from '../color-picker/predefined-colors.constant';
 
 export class Calendar {
@@ -56,7 +57,6 @@ export class Calendar {
       }
       return iEvent;
     });
-    this.handleEvent('Dropped or resized', event);
   }
 
   handleEvent(action: string, event?: CalendarEvent): void {
@@ -100,6 +100,7 @@ export class Calendar {
       {
         label: '<i class="fas fa-fw fa-pencil-alt"></i>',
         a11yLabel: 'Edit',
+        cssClass: 'action-icon',
         onClick: ({ event }: { event: CalendarEvent }): void => {
           this.handleEvent('Edited', event);
         },
@@ -107,6 +108,7 @@ export class Calendar {
       {
         label: '<i class="fas fa-fw fa-trash-alt"></i>',
         a11yLabel: 'Delete',
+        cssClass: 'action-icon',
         onClick: ({ event }: { event: CalendarEvent }): void => {
           this.events = this.events.filter((iEvent) => iEvent !== event);
           // this.handleEvent('Deleted', event);

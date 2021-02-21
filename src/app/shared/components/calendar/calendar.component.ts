@@ -42,8 +42,6 @@ export class CalendarComponent implements OnInit, OnDestroy {
       dialogConfig.autoFocus = true;
       dialogConfig.disableClose = true;
       dialogConfig.hasBackdrop = true;
-      dialogConfig.minWidth = 500;
-      // dialogConfig.maxWidth = 300;
       dialogConfig.data = {
         action,
         data: event,

@@ -26,6 +26,16 @@ export class SchedulerComponent {
       draggable: true,
       meta: {
         message: '',
+        contacts: [
+          {
+            name: 'João',
+            phone: '(11) 9 9999-9990',
+          },
+          {
+            name: 'João',
+            phone: '(11) 9 8888-1245',
+          },
+        ],
       },
     },
     {
@@ -40,6 +50,12 @@ export class SchedulerComponent {
       draggable: true,
       meta: {
         message: '',
+        contacts: [
+          {
+            name: 'João',
+            phone: '(11) 9 9999-9990',
+          },
+        ],
       },
     },
   ];

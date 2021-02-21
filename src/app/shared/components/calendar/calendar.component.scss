@@ -1,7 +1,19 @@
+@import '~src/scss/abstracts/colors';
+
 .current-date-view {
   margin: 0;
 }
 
 .calendar-container {
   margin: 24px 0;
+}
+
+::ng-deep a.action-icon {
+  color: white;
+  font-size: 9pt;
+  margin: 0 3px;
+
+  &:hover {
+    color: $primary-color;
+  }
 }

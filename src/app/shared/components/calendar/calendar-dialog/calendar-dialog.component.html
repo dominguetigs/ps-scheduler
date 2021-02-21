@@ -1,6 +1,6 @@
 <mat-dialog-content>
-  <div fxLayout="column">
-    <div fxLayout fxLayoutAlign="space-between center" fxLayoutGap="14px">
+  <div fxLayout="column" fxLayoutGap="10px">
+    <div fxLayout fxLayoutAlign="space-between center" fxLayoutGap="10px">
       <mat-form-field fxFlex="0 1 100%">
         <mat-label>Event title</mat-label>
         <input matInput type="text" [(ngModel)]="dialogData.title" (keyup)="calendarInstance.refresh.next()" />
@@ -11,11 +11,10 @@
         (onSelectChanged)="dialogData.color = $event; calendarInstance.refresh.next()"
       ></app-color-picker>
     </div>
-    <div fxLayout fxLayoutAlign="center center" fxLayoutGap="14px">
+    <div fxLayout fxLayoutAlign="center center" fxLayoutGap="10px">
       <mat-form-field fxFlex>
         <mat-label>Starts at</mat-label>
         <input
-          class="form-control"
           type="text"
           matInput
           mwlFlatpickr
@@ -32,7 +31,6 @@
       <mat-form-field fxFlex>
         <mat-label>Ends at</mat-label>
         <input
-          class="form-control"
           type="text"
           matInput
           mwlFlatpickr
@@ -64,7 +62,7 @@
       <mat-icon style="font-size: 16pt">delete</mat-icon>
     </button>
     <span fxFlex="0 1 auto"></span>
-    <div fxLayout fxLayoutGap="14px">
+    <div fxLayout fxLayoutGap="10px">
       <button mat-flat-button mat-dialog-close>Close</button>
       <button mat-flat-button color="primary" mat-dialog-close>Save</button>
     </div>

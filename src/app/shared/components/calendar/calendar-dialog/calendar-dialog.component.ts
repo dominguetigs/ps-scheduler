@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+import { ToastrService } from 'ngx-toastr';
+
 import { CalendarEvent } from 'angular-calendar';
 
 import { Calendar } from '../calendar.model';
@@ -17,6 +19,7 @@ export class CalendarDialogComponent {
 
   constructor(
     private _dialogRef: MatDialogRef<CalendarDialogComponent>,
+    private _toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) data: { action: string; data: CalendarEvent; calendarInstance: Calendar }
   ) {
     this.isEditMode = !!data?.data;
@@ -38,5 +41,17 @@ export class CalendarDialogComponent {
     this.calendarInstance.deleteEvent(this.dialogData);
     this.calendarInstance.refresh.next();
     this._dialogRef.close();
+  }
+
+  close(): void {}
+
+  save(): void {}
+
+  // -----------------------------------------------------------------------------------------------------------------
+  // Private Methods
+  // -----------------------------------------------------------------------------------------------------------------
+
+  private _isValidEvent(): boolean {
+    return this.dialogData.title && this.dialogData.meta.message && this.dialogData.meta.contacts?.length;
   }
 }
