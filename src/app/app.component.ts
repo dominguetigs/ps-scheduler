@@ -1,23 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router, RoutesRecognized } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+
+import { Subject } from 'rxjs';
+import { filter, map, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   pageTitle: string;
 
-  constructor(private _activatedRoute: ActivatedRoute, private _router: Router) {}
+  private _unsubscribeAll: Subject<any>;
+
+  constructor(private _activatedRoute: ActivatedRoute, private _router: Router) {
+    this._unsubscribeAll = new Subject();
+  }
+
+  // -----------------------------------------------------------------------------------------------------------------
+  // Lifecycle Hooks
+  // -----------------------------------------------------------------------------------------------------------------
 
   ngOnInit(): void {
     this._router.events
       .pipe(
+        takeUntil(this._unsubscribeAll),
         filter((event) => event instanceof NavigationEnd),
         map(() => {
           let child = this._activatedRoute.firstChild;
+
           while (child) {
             if (child.firstChild) {
               child = child.firstChild;
@@ -33,5 +45,10 @@ export class AppComponent implements OnInit {
       .subscribe((pageTitle: string) => {
         this.pageTitle = pageTitle;
       });
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
   }
 }

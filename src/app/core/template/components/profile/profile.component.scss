@@ -44,6 +44,16 @@
       position: absolute;
       margin-top: 50px;
 
+      .user-data-container {
+        .user-name {
+          color: $white;
+        }
+
+        .user-profile {
+          font-weight: 500;
+        }
+      }
+
       .profile-image {
         width: 70px;
         height: 70px;

@@ -1,0 +1,16 @@
+.mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0.454em 0; /* Original top/bottom value was 1em. */
+}
+
+.mat-input-element {
+  position: relative;
+  top: -1.2em; /* Adjust accordingly to keep placeholder/input text vertically centered. */
+}
+
+.mat-form-field-wrapper {
+  padding: 0;
+}
+
+.mat-form-field-label-wrapper {
+  top: -1.2em; /* Adjust accordingly to keep <mat-label> text vertically centered. */
+}

@@ -1,0 +1,14 @@
+<div fxLayout fxLayoutAlign="space-between center">
+  <div fxLayout fxLayoutAlign="center center" fxLayoutGap="14px">
+    <mat-form-field>
+      <mat-label>Select an period</mat-label>
+      <mat-select [(ngModel)]="selectedPeriod">
+        <mat-option [value]="p.value" *ngFor="let p of periods">{{ p.option }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-stroked-button color="primary">Today</button>
+  </div>
+  <button mat-flat-button color="primary" style="padding-left: 10px"
+    ><mat-icon style="margin-right: 10px; font-size: 16pt">add</mat-icon>New</button
+  >
+</div>
