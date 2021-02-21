@@ -1,8 +1,8 @@
 <div class="profile-container-wrapper" fxLayout fxLayout.lt-md="column" fxLayoutAlign="center center">
-  <div class="profile-container" fxLayout fxLayout.lt-md="column" fxLayoutAlign="center center" fxLayoutGap="14px">
+  <div class="profile-container" fxLayout fxLayout.lt-md="column" fxLayoutAlign="center center" fxLayoutGap="10px">
     <div class="user-data-container" fxLayout="column" fxLayoutAlign="center center">
       <span class="user-name">{{ user.name }}</span>
-      <span class="user-profile" fxFlexAlign.gt-sm="end">{{ user.profile }}</span>
+      <span class="user-profile" fxFlexAlign="center" fxFlexAlign.gt-sm="end">{{ user.profile }}</span>
     </div>
     <div class="profile-image">
       <img [src]="user.photoUrl" alt="User Photo" />

@@ -2,7 +2,7 @@
 @import 'abstracts/colors', 'abstracts/spacings';
 
 // 2. Base
-@import 'base/reset', 'base/typography';
+@import 'base/base', 'base/reset', 'base/typography';
 
 // 3. Components
 @import 'components/scrollbar';

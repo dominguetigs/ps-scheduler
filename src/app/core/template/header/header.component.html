@@ -1,16 +1,27 @@
 <mat-toolbar class="header" fxLayoutAlign="space-between center">
-  <button mat-icon-button (click)="toggle()" class="sidenav-button" fxHide fxShow.lt-md>
+  <button mat-icon-button (click)="toggle()" fxHide fxShow.lt-md>
     <mat-icon>menu</mat-icon>
   </button>
   <app-logo fxHide fxShow.gt-sm></app-logo>
   <div class="extra-options" fxLayout fxLayoutAlign="center center">
-    <app-profile fxHide fxShow.gt-sm></app-profile>
-    <mat-divider vertical fxHide fxShow.gt-sm></mat-divider>
     <button mat-icon-button matTooltip="Notifications">
       <mat-icon matBadge="7" matBadgeColor="primary" matBadgeSize="small">notifications</mat-icon>
     </button>
-    <button mat-icon-button matTooltip="Logout" fxHide fxShow.gt-sm>
-      <mat-icon>logout</mat-icon>
-    </button>
+    <app-profile class="pointer" style="margin-left: 24px" [matMenuTriggerFor]="menu" fxHide fxShow.gt-sm></app-profile>
+    <mat-menu #menu="matMenu" xPosition="before" fxHide fxShow.gt-sm>
+      <button mat-menu-item>
+        <mat-icon style="font-size: 16pt">person</mat-icon>
+        <span style="font-size: 10pt">Profile</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon style="font-size: 16pt">settings</mat-icon>
+        <span style="font-size: 10pt">Settings</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>
+        <mat-icon style="font-size: 16pt">logout</mat-icon>
+        <span style="font-size: 10pt">Logout</span>
+      </button>
+    </mat-menu>
   </div>
 </mat-toolbar>
