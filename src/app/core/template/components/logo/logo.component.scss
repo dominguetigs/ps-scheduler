@@ -1,0 +1,11 @@
+@import '~src/scss/abstracts/colors';
+
+.logo-container {
+  background-color: $primary-color;
+  color: $white;
+  height: 70px;
+  min-width: 70px;
+  width: auto;
+  font-size: 24pt;
+  padding: 0 24px;
+}

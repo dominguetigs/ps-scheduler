@@ -1,0 +1,25 @@
+@import '~src/scss/abstracts/colors';
+
+.header {
+  background-color: $white;
+  padding: 0;
+  height: 70px;
+
+  .mat-icon {
+    color: #c9ced6;
+  }
+
+  .sidenav-button {
+    margin-left: 6px;
+  }
+
+  .extra-options {
+    margin-right: 12px;
+
+    .mat-divider {
+      height: 50px;
+      margin: 0 12px 0 24px;
+      background-color: #eff4f6;
+    }
+  }
+}

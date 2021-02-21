@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { MediaObserver } from '@angular/flex-layout';
 import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -27,8 +27,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
   constructor(private _media: MediaObserver, private _sidenavService: SidenavService) {
     this._unsubscribeAll = new Subject();
 
-    this._media.media$.pipe(takeUntil(this._unsubscribeAll)).subscribe((mediaChange: MediaChange) => {
-      this.handleMediaChange(mediaChange);
+    this._media.media$.pipe(takeUntil(this._unsubscribeAll)).subscribe(() => {
+      this.handleMediaChange();
     });
   }
 
@@ -51,7 +51,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   // Private Methods
   // -----------------------------------------------------------------------------------------------------------------
 
-  private handleMediaChange(mediaChange: MediaChange) {
+  private handleMediaChange() {
     if (this._media.isActive('lt-md')) {
       this.mode = 'over';
       this.opened = false;

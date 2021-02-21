@@ -1,3 +1,5 @@
+@import '~src/scss/abstracts/colors';
+
 mat-sidenav-container {
   height: calc(100% - 70px);
 }
@@ -13,8 +15,12 @@ mat-sidenav {
 
   background-color: #373b53;
 
+  .profile-container {
+    background-color: $primary-color;
+  }
+
   .sidenav-list {
-    height: 100%;
+    height: calc(100% - 230px);
 
     .mat-divider {
       background-color: #969cba;

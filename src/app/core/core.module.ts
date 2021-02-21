@@ -3,17 +3,19 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { HeaderComponent } from './header/header.component';
-import { UserService } from './services/user.service';
-import { MenuListItemComponent } from './sidenav/menu-list-item/menu-list-item.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
+import { LogoComponent } from './template/components/logo/logo.component';
+import { HeaderComponent } from './template/header/header.component';
+import { MenuListItemComponent } from './template/sidenav/menu-list-item/menu-list-item.component';
+import { SidenavComponent } from './template/sidenav/sidenav.component';
 
-import { SidenavService } from './sidenav/sidenav.service';
+import { UserService } from './services/user.service';
+import { SidenavService } from './template/sidenav/sidenav.service';
+import { ProfileComponent } from './template/components/profile/profile.component';
 
 @NgModule({
-  declarations: [HeaderComponent, MenuListItemComponent, SidenavComponent],
+  declarations: [LogoComponent, ProfileComponent, HeaderComponent, MenuListItemComponent, SidenavComponent],
   imports: [RouterModule, SharedModule],
-  exports: [HeaderComponent, MenuListItemComponent, SidenavComponent],
+  exports: [LogoComponent, ProfileComponent, HeaderComponent, MenuListItemComponent, SidenavComponent],
   providers: [UserService, SidenavService],
 })
 export class CoreModule {}

@@ -10,7 +10,5 @@
   <mat-icon class="route-icon" [matTooltip]="item.displayName" matTooltipPosition="right" fxHide fxShow.gt-sm>{{
     item.iconName
   }}</mat-icon>
-  <span class="menu-item-text" [ngStyle]="{ 'margin-left': '10px', width: '150px' }" fxHide fxShow.lt-md>{{
-    item.displayName
-  }}</span>
+  <span class="menu-item-text" fxHide fxShow.lt-md>{{ item.displayName }}</span>
 </a>

@@ -1,0 +1,16 @@
+<mat-toolbar class="header" fxLayoutAlign="space-between center">
+  <button mat-icon-button (click)="toggle()" class="sidenav-button" fxHide fxShow.lt-md>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <app-logo fxHide fxShow.gt-sm></app-logo>
+  <div class="extra-options" fxLayout fxLayoutAlign="center center">
+    <app-profile fxHide fxShow.gt-sm></app-profile>
+    <mat-divider vertical fxHide fxShow.gt-sm></mat-divider>
+    <button mat-icon-button matTooltip="Notifications">
+      <mat-icon matBadge="7" matBadgeColor="primary" matBadgeSize="small">notifications</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Logout" fxHide fxShow.gt-sm>
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

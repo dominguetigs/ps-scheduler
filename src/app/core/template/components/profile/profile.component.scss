@@ -1,0 +1,56 @@
+@import '~src/scss/abstracts/colors';
+
+.profile-container-wrapper {
+  background-color: $white;
+
+  .profile-container {
+    .user-data-container {
+      line-height: 1.3;
+
+      .user-name {
+        font-size: 14px;
+      }
+
+      .user-profile {
+        color: #a6acbe;
+        font-size: 12px;
+      }
+    }
+
+    .profile-image {
+      width: 70px;
+      height: 70px;
+      border-radius: 35px;
+
+      background-color: $white;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  .profile-container-wrapper {
+    position: relative;
+    background-color: $primary-color;
+    height: 100px;
+    margin-bottom: 50px;
+
+    .profile-container {
+      position: absolute;
+      margin-top: 50px;
+
+      .profile-image {
+        background-color: $accent-color;
+      }
+    }
+  }
+}
