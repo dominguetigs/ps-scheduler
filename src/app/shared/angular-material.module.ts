@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,6 +30,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
     MatBadgeModule,
     MatCardModule,
+    MatDialogModule,
     MatDividerModule,
     MatExpansionModule,
     MatButtonModule,
@@ -51,6 +53,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
     MatBadgeModule,
     MatCardModule,
+    MatDialogModule,
     MatDividerModule,
     MatExpansionModule,
     MatButtonModule,

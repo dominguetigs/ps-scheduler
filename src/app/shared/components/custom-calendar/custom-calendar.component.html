@@ -1,0 +1,73 @@
+<ng-container *ngIf="calendar">
+  <!-- Action Header -->
+  <div fxLayout fxLayoutAlign="space-between center">
+    <div fxLayout fxLayoutAlign="center center" fxLayoutGap="14px">
+      <div fxLayout fxLayoutAlign="center center" fxLayoutGap="14px">
+        <mat-form-field>
+          <mat-label>Select an period</mat-label>
+          <mat-select [(ngModel)]="calendar.view">
+            <mat-option [value]="v.value" *ngFor="let v of views">{{ v.option }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-stroked-button color="primary" mwlCalendarToday [(viewDate)]="calendar.viewDate">Today</button>
+      </div>
+      <div fxLayout fxLayoutAlign="center center" fxLayoutGap="14px">
+        <mat-icon
+          class="pointer"
+          mwlCalendarPreviousView
+          [view]="calendar.view"
+          [(viewDate)]="calendar.viewDate"
+          (viewDateChange)="calendar.closeOpenMonthViewDay()"
+          >navigate_before</mat-icon
+        >
+        <mat-icon
+          class="pointer"
+          mwlCalendarNextView
+          [view]="calendar.view"
+          [(viewDate)]="calendar.viewDate"
+          (viewDateChange)="calendar.closeOpenMonthViewDay()"
+          >navigate_next</mat-icon
+        >
+        <h2 class="current-date-view">{{ calendar.viewDate | calendarDate: calendar.view + 'ViewTitle':'en' }}</h2>
+      </div>
+    </div>
+    <button mat-flat-button color="primary" style="padding-left: 10px" (click)="calendar.handleEvent('Clicked')">
+      <mat-icon style="margin-right: 10px; font-size: 16pt">add</mat-icon>New
+    </button>
+  </div>
+  <!-- Action Header -->
+
+  <!-- Calendar -->
+  <div class="calendar-container" [ngSwitch]="calendar.view">
+    <mwl-calendar-month-view
+      *ngSwitchCase="calendar.CalendarView.Month"
+      [viewDate]="calendar.viewDate"
+      [events]="calendar.events"
+      [refresh]="calendar.refresh"
+      [activeDayIsOpen]="calendar.activeDayIsOpen"
+      (dayClicked)="calendar.dayClicked($event.day)"
+      (eventClicked)="calendar.handleEvent('Edited', $event.event)"
+      (eventTimesChanged)="calendar.eventTimesChanged($event)"
+    >
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view
+      *ngSwitchCase="calendar.CalendarView.Week"
+      [viewDate]="calendar.viewDate"
+      [events]="calendar.events"
+      [refresh]="calendar.refresh"
+      (eventClicked)="calendar.handleEvent('Edited', $event.event)"
+      (eventTimesChanged)="calendar.eventTimesChanged($event)"
+    >
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view
+      *ngSwitchCase="calendar.CalendarView.Day"
+      [viewDate]="calendar.viewDate"
+      [events]="calendar.events"
+      [refresh]="calendar.refresh"
+      (eventClicked)="calendar.handleEvent('Edited', $event.event)"
+      (eventTimesChanged)="calendar.eventTimesChanged($event)"
+    >
+    </mwl-calendar-day-view>
+  </div>
+  <!-- Calendar -->
+</ng-container>

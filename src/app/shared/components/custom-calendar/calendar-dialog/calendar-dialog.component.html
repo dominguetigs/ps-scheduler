@@ -1,0 +1,75 @@
+<mat-dialog-content>
+  <div fxLayout="column" fxLayoutGap="14px">
+    <div fxLayout fxLayoutAlign="space-betwwen center">
+      <mat-form-field>
+        <mat-label>Event title</mat-label>
+        <input matInput type="text" [(ngModel)]="dialogData.title" (keyup)="calendarInstance.refresh.next()" />
+        <button
+          mat-button
+          *ngIf="dialogData.title"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="dialogData.title = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <div style="width: 10px; height: 10px; border-radius: 5px; background-color: red"></div>
+    </div>
+    <div fxLayout fxLayoutAlign="center center" fxLayoutGap="14px">
+      <!-- <mat-form-field>
+        <mat-label>Starts at</mat-label>
+        <input
+          class="form-control"
+          type="text"
+          matInput
+          mwlFlatpickr
+          [(ngModel)]="dialogData.start"
+          (ngModelChange)="calendarInstance.refresh.next()"
+          [altInput]="true"
+          [convertModelValue]="true"
+          [enableTime]="true"
+          dateFormat="Y-m-dTH:i"
+          altFormat="F j, Y H:i"
+          placeholder="Not set"
+        />
+      </mat-form-field>
+      <input
+        class="form-control"
+        type="text"
+        matInput
+        mwlFlatpickr
+        [(ngModel)]="dialogData.end"
+        (ngModelChange)="calendarInstance.refresh.next()"
+        [altInput]="true"
+        [convertModelValue]="true"
+        [enableTime]="true"
+        dateFormat="Y-m-dTH:i"
+        altFormat="F j, Y H:i"
+        placeholder="Not set"
+      /> -->
+      <input
+        class="form-control"
+        type="text"
+        mwlFlatpickr
+        [(ngModel)]="dialogData.end"
+        (ngModelChange)="calendarInstance.refresh.next()"
+        [altInput]="true"
+        [convertModelValue]="true"
+        [enableTime]="true"
+        dateFormat="Y-m-dTH:i"
+        altFormat="F j, Y H:i"
+        placeholder="Not set"
+      />
+    </div>
+  </div>
+  <div fxLayout fxLayoutAlign="space-between center">
+    <mat-icon style="font-size: 16pt">delete</mat-icon>
+    <span fxFlex="0 1 auto"></span>
+    <div fxLayout fxLayoutGap="14px">
+      <button mat-flat-button (click)="close()">Close</button>
+      <button mat-flat-button color="primary" (click)="save()">Save</button>
+    </div>
+  </div>
+</mat-dialog-content>
