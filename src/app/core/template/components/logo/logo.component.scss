@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
 @import '~src/scss/abstracts/colors';
 
 .logo-container {
@@ -7,5 +8,15 @@
   min-width: 70px;
   width: auto;
   font-size: 24pt;
-  padding: 0 24px;
+
+  .logo-prefix {
+    font-family: 'Stick', sans-serif;
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    border: 3px solid $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
