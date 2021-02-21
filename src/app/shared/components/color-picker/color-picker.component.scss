@@ -1,0 +1,45 @@
+@import '~src/scss/abstracts/colors';
+
+.color-picker-select {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 0 5px 0 15px;
+  height: 36px;
+  line-height: 34px;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: lighten($color: $primary-color, $amount: 30);
+    border-color: lighten($color: $primary-color, $amount: 20);
+  }
+
+  .selected-color-container {
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+  }
+}
+
+// Overrides mat-menu
+::ng-deep .mat-menu-panel {
+  min-width: 70px;
+  width: 70px;
+
+  .color-option {
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    margin: 3px;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    .mat-icon {
+      font-size: 14px;
+      font-weight: 600;
+      width: 14px;
+      height: 14px;
+      color: $white;
+    }
+  }
+}

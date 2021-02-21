@@ -12,9 +12,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { CalendarDialogComponent } from './components/calendar/calendar-dialog/calendar-dialog.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { ColorPickerComponent } from './components/color-picker/color-picker.component';
 
 @NgModule({
-  declarations: [CalendarDialogComponent, CalendarComponent],
+  declarations: [CalendarDialogComponent, CalendarComponent, ColorPickerComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -44,6 +45,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 
     CalendarDialogComponent,
     CalendarComponent,
+    ColorPickerComponent,
   ],
 })
 export class SharedModule {}

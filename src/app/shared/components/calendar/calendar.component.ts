@@ -6,7 +6,7 @@ import { CalendarEvent } from 'angular-calendar';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { CustomCalendar } from './calendar.model';
+import { Calendar } from './calendar.model';
 
 import { CalendarDialogComponent } from './calendar-dialog/calendar-dialog.component';
 
@@ -14,14 +14,14 @@ import { ICalendarView } from './calendar-view.interface';
 import { CALENDAR_VIEWS } from './calendar-views.constant';
 
 @Component({
-  selector: 'app-custom-calendar',
-  templateUrl: './custom-calendar.component.html',
-  styleUrls: ['./custom-calendar.component.scss'],
+  selector: 'app-calendar',
+  templateUrl: './calendar.component.html',
+  styleUrls: ['./calendar.component.scss'],
 })
 export class CalendarComponent implements OnInit, OnDestroy {
   @Input() events: CalendarEvent[] = [];
 
-  calendar: CustomCalendar;
+  calendar: Calendar;
   views: ICalendarView[];
 
   private _unsubscribeAll: Subject<any>;
@@ -36,7 +36,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
   // -----------------------------------------------------------------------------------------------------------------
 
   ngOnInit(): void {
-    this.calendar = new CustomCalendar(this.events);
+    this.calendar = new Calendar(this.events);
     this.calendar.handleEventChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(({ action, event }) => {
       const dialogConfig = new MatDialogConfig();
       dialogConfig.autoFocus = true;

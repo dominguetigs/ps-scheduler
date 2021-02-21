@@ -1,12 +1,15 @@
 <mat-dialog-content>
   <div fxLayout="column">
-    <div fxLayout fxLayoutAlign="space-betwwen center" fxLayoutGap="14px">
-      <mat-form-field fxFlex="0 1 50%">
+    <div fxLayout fxLayoutAlign="space-between center" fxLayoutGap="14px">
+      <mat-form-field fxFlex="0 1 100%">
         <mat-label>Event title</mat-label>
         <input matInput type="text" [(ngModel)]="dialogData.title" (keyup)="calendarInstance.refresh.next()" />
       </mat-form-field>
-      <span fxFlex="0 1 auto"></span>
-      <div style="width: 10px; height: 10px; border-radius: 5px; background-color: red"></div>
+      <app-color-picker
+        fxFlex="0 1 70px"
+        [selected]="dialogData.color"
+        (onSelectChanged)="dialogData.color = $event; calendarInstance.refresh.next()"
+      ></app-color-picker>
     </div>
     <div fxLayout fxLayoutAlign="center center" fxLayoutGap="14px">
       <mat-form-field fxFlex>

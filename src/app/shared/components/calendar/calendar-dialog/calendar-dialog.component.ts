@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { CalendarEvent } from 'angular-calendar';
 
-import { CustomCalendar } from '../calendar.model';
+import { Calendar } from '../calendar.model';
 
 @Component({
   selector: 'app-calendar-dialog',
@@ -11,13 +11,13 @@ import { CustomCalendar } from '../calendar.model';
   styleUrls: ['./calendar-dialog.component.scss'],
 })
 export class CalendarDialogComponent {
-  calendarInstance: CustomCalendar;
+  calendarInstance: Calendar;
   dialogData: any;
   isEditMode: boolean;
 
   constructor(
     private _dialogRef: MatDialogRef<CalendarDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) data: { action: string; data: CalendarEvent; calendarInstance: CustomCalendar }
+    @Inject(MAT_DIALOG_DATA) data: { action: string; data: CalendarEvent; calendarInstance: Calendar }
   ) {
     this.isEditMode = !!data?.data;
     this.calendarInstance = data?.calendarInstance;

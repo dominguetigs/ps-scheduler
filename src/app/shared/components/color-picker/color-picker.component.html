@@ -1,0 +1,25 @@
+<div
+  class="color-picker-select pointer"
+  [matMenuTriggerFor]="colorPickerMenu"
+  fxLayout
+  fxLayoutAlign="center center"
+  fxLayoutGap="5px"
+>
+  <div class="selected-color-container" [style.backgroundColor]="selected?.primary"></div>
+  <mat-icon>arrow_drop_down</mat-icon>
+</div>
+
+<mat-menu #colorPickerMenu="matMenu" xPosition="before">
+  <div fxLayout="row wrap" fxLayoutAlign="center center">
+    <div
+      *ngFor="let color of predefinedColors"
+      class="color-option pointer"
+      [style.backgroundColor]="color.primary"
+      (click)="selected = color; onSelectChanged.emit(color)"
+      fxLayout
+      fxLayoutAlign="center center"
+    >
+      <mat-icon *ngIf="color.primary === selected.primary">check</mat-icon>
+    </div>
+  </div>
+</mat-menu>

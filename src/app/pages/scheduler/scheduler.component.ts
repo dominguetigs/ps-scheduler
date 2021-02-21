@@ -1,22 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { startOfDay, subDays, addDays, endOfMonth, addHours } from 'date-fns';
+import { startOfDay, subDays, addDays, addHours } from 'date-fns';
 import { CalendarEvent } from 'angular-calendar';
 
-const colors: any = {
-  red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3',
-  },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF',
-  },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA',
-  },
-};
+import { PREDEFINED_COLORS } from 'src/app/shared/components/color-picker/predefined-colors.constant';
 
 @Component({
   selector: 'app-scheduler',
@@ -30,7 +17,7 @@ export class SchedulerComponent {
       start: subDays(startOfDay(new Date()), 1),
       end: addDays(new Date(), 1),
       title: 'Event 1',
-      color: colors.red,
+      color: PREDEFINED_COLORS[0],
       allDay: true,
       resizable: {
         beforeStart: true,
@@ -45,7 +32,7 @@ export class SchedulerComponent {
       start: addHours(startOfDay(new Date()), 2),
       end: addHours(new Date(), 2),
       title: 'Event 4',
-      color: colors.yellow,
+      color: PREDEFINED_COLORS[7],
       resizable: {
         beforeStart: true,
         afterEnd: true,

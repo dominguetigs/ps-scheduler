@@ -2,8 +2,9 @@ import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, Cal
 import { endOfDay, isSameDay, isSameMonth, startOfDay } from 'date-fns';
 
 import { ReplaySubject, Subject } from 'rxjs';
+import { PREDEFINED_COLORS } from '../color-picker/predefined-colors.constant';
 
-export class CustomCalendar {
+export class Calendar {
   CalendarView = CalendarView;
   activeDayIsOpen: boolean;
   handleEventChanged: ReplaySubject<any>;
@@ -36,11 +37,10 @@ export class CustomCalendar {
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
-      if ((isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) || events.length === 0) {
-        this.activeDayIsOpen = false;
-      } else {
-        this.activeDayIsOpen = true;
-      }
+      this.activeDayIsOpen = !(
+        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
+        events.length === 0
+      );
       this.viewDate = date;
     }
   }
@@ -70,7 +70,7 @@ export class CustomCalendar {
         title: 'New event',
         start: startOfDay(new Date()),
         end: endOfDay(new Date()),
-        // color: 'colors.red',
+        color: PREDEFINED_COLORS[0],
         draggable: true,
         resizable: {
           beforeStart: true,
