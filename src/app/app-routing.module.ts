@@ -10,10 +10,16 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./pages/dashboard/dashboard.module').then((m) => m.DashboardModule),
+    data: {
+      title: 'Dashboard',
+    },
   },
   {
     path: 'scheduler',
     loadChildren: () => import('./pages/scheduler/scheduler.module').then((m) => m.SchedulerModule),
+    data: {
+      title: 'Scheduler',
+    },
   },
   {
     path: '**',

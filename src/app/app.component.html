@@ -2,6 +2,7 @@
 <app-sidenav>
   <ng-container>
     <div style="padding: 16px" class="p-16">
+      <h1 *ngIf="pageTitle">{{ pageTitle }}</h1>
       <router-outlet></router-outlet>
     </div>
   </ng-container>
