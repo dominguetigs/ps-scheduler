@@ -39,7 +39,6 @@ export class CalendarComponent implements OnInit, OnDestroy {
     this.calendar = new Calendar(this.events);
     this.calendar.handleEventChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(({ action, event }) => {
       const dialogConfig = new MatDialogConfig();
-      dialogConfig.autoFocus = true;
       dialogConfig.disableClose = true;
       dialogConfig.hasBackdrop = true;
       dialogConfig.data = {
