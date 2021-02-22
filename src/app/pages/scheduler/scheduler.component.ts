@@ -25,7 +25,7 @@ export class SchedulerComponent {
       },
       draggable: true,
       meta: {
-        message: '',
+        message: 'Test 1',
         phoneList: ['(11) 9 9999-9990', '(11) 9 8888-1245'],
       },
     },
@@ -40,7 +40,7 @@ export class SchedulerComponent {
       },
       draggable: true,
       meta: {
-        message: '',
+        message: 'Test 2',
         phoneList: ['(11) 9 8888-1245'],
       },
     },

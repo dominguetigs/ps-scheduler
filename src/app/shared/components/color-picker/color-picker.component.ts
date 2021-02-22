@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { IColor } from './color.interface';
 
 import { PREDEFINED_COLORS } from './predefined-colors.constant';
