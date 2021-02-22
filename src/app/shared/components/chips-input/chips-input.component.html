@@ -1,0 +1,16 @@
+<mat-form-field fxFlex="0 1 100%">
+  <mat-label>{{ label }}</mat-label>
+  <mat-chip-list #chipList aria-label="Item selection">
+    <mat-chip *ngFor="let item of items" [selectable]="selectable" [removable]="removable" (removed)="remove(item)">
+      {{ item }}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input
+      placeholder="+ New..."
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)"
+      [required]="required"
+    />
+  </mat-chip-list>
+</mat-form-field>

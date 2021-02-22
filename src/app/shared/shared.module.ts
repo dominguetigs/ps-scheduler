@@ -12,6 +12,8 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { NgxCsvParserModule } from 'ngx-csv-parser';
+
 import { CalendarDialogComponent } from './components/calendar/calendar-dialog/calendar-dialog.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ChipsInputComponent } from './components/chips-input/chips-input.component';
@@ -42,6 +44,8 @@ import { CSVExtractorComponent } from './components/csv-extractor/csv-extractor.
     ToastrModule.forRoot(),
 
     FlexLayoutModule,
+
+    NgxCsvParserModule,
   ],
   exports: [
     CommonModule,
@@ -56,6 +60,8 @@ import { CSVExtractorComponent } from './components/csv-extractor/csv-extractor.
     ToastrModule,
 
     FlexLayoutModule,
+
+    NgxCsvParserModule,
 
     CalendarDialogComponent,
     CalendarComponent,

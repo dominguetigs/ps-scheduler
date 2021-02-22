@@ -1,0 +1,51 @@
+<div class="csv-extractor-container">
+  <div class="info-container" fxLayout fxLayoutAlign="start center" fxLayoutGap="5px">
+    <mat-icon>info</mat-icon>
+    <ng-container *ngIf="isExtractMode; else ManualModeInfoTemplate">
+      <span>Add {{ label | lowercase }} manually or add a .csv extension file.</span>
+    </ng-container>
+    <ng-template #ManualModeInfoTemplate>
+      <span>Add {{ label | lowercase }} typing and pressing ENTER or SPACE.</span>
+      <mat-icon class="close-manual-mode-icon pointer" (click)="isExtractMode = true">close</mat-icon>
+    </ng-template>
+  </div>
+  <div *ngIf="isExtractMode; else ManualModeTemplate">
+    <div class="csv-extractor-template" fxLayout fxLayoutAlign="center center" fxLayoutGap="15px">
+      <button
+        mat-icon-button
+        matTooltip="CSV File Upload"
+        matTooltipPosition="left"
+        aria-label="File upload Button"
+        (click)="fileInput.click()"
+        fxLayout="column"
+        fxLayoutAlign="center center"
+      >
+        <mat-icon>file_upload</mat-icon>
+      </button>
+      <mat-divider vertical></mat-divider>
+      <button
+        mat-icon-button
+        matTooltip="Manual Mode"
+        matTooltipPosition="right"
+        aria-label="Manual Tool Button"
+        (click)="isExtractMode = false"
+        fxLayout="column"
+        fxLayoutAlign="center center"
+      >
+        <mat-icon>pan_tool</mat-icon>
+      </button>
+      <input
+        #fileInput
+        type="file"
+        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+        (change)="onFileInput($event)"
+        style="display: none"
+      />
+    </div>
+  </div>
+  <ng-template #ManualModeTemplate>
+    <div class="manual-mode-template">
+      <app-chips-input [items]="items" [label]="label" [required]="true"></app-chips-input>
+    </div>
+  </ng-template>
+</div>

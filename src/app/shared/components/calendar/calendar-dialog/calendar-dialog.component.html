@@ -1,70 +1,83 @@
-<mat-dialog-content>
-  <div fxLayout="column" fxLayoutGap="10px">
-    <div fxLayout fxLayoutAlign="space-between center" fxLayoutGap="10px">
-      <mat-form-field fxFlex="0 1 100%">
-        <mat-label>Event title</mat-label>
-        <input matInput type="text" [(ngModel)]="dialogData.title" (keyup)="calendarInstance.refresh.next()" />
-      </mat-form-field>
-      <app-color-picker
-        fxFlex="0 1 70px"
-        [selected]="dialogData.color"
-        (onSelectChanged)="dialogData.color = $event; calendarInstance.refresh.next()"
-      ></app-color-picker>
-    </div>
-    <div fxLayout fxLayoutAlign="center center" fxLayoutGap="10px">
-      <mat-form-field fxFlex>
-        <mat-label>Starts at</mat-label>
-        <input
-          type="text"
-          matInput
-          mwlFlatpickr
-          [(ngModel)]="dialogData.start"
-          (ngModelChange)="calendarInstance.refresh.next()"
-          [altInput]="true"
-          [convertModelValue]="true"
-          [enableTime]="true"
-          dateFormat="Y-m-dTH:i"
-          altFormat="F j, Y H:i"
-          placeholder="Not set"
-        />
-      </mat-form-field>
-      <mat-form-field fxFlex>
-        <mat-label>Ends at</mat-label>
-        <input
-          type="text"
-          matInput
-          mwlFlatpickr
-          [(ngModel)]="dialogData.end"
-          (ngModelChange)="calendarInstance.refresh.next()"
-          [altInput]="true"
-          [convertModelValue]="true"
-          [enableTime]="true"
-          dateFormat="Y-m-dTH:i"
-          altFormat="F j, Y H:i"
-          placeholder="Not set"
-        />
-      </mat-form-field>
-    </div>
-    <mat-form-field>
-      <mat-label>Message</mat-label>
-      <textarea
+<mat-dialog-content *ngIf="formControls" fxLayout="column" fxLayoutGap="20px">
+  <div fxLayout fxLayoutAlign="center center" fxLayoutGap="10px">
+    <mat-form-field fxFlex fxFlex.lt-md="0 1 70%">
+      <mat-label>Event title</mat-label>
+      <input
         matInput
-        rows="5"
-        placeholder="Message"
-        [(ngModel)]="dialogData.meta.message"
+        type="text"
+        [formControl]="formControls.title"
+        (keyup)="dialogData.title = formControls.title.value; calendarInstance.refresh.next()"
+        required
+      />
+      <mat-error *ngIf="formControls.title.invalid">Required field</mat-error>
+    </mat-form-field>
+    <app-color-picker
+      fxFlex="0 1 auto"
+      [selected]="dialogData.color"
+      (onSelectChanged)="dialogData.color = $event; calendarInstance.refresh.next()"
+    ></app-color-picker>
+  </div>
+  <div fxLayout fxLayout.lt-md="column" fxLayoutAlign.gt-sm="center center" fxLayoutGap="10px">
+    <mat-form-field fxFlex>
+      <mat-label>Starts at</mat-label>
+      <input
+        type="text"
+        matInput
+        mwlFlatpickr
+        [(ngModel)]="dialogData.start"
         (ngModelChange)="calendarInstance.refresh.next()"
-      >
-      </textarea>
+        [altInput]="true"
+        [convertModelValue]="true"
+        [enableTime]="true"
+        dateFormat="Y-m-dTH:i"
+        altFormat="F j, Y H:i"
+        placeholder="Not set"
+      />
+    </mat-form-field>
+    <mat-form-field fxFlex>
+      <mat-label>Ends at</mat-label>
+      <input
+        type="text"
+        matInput
+        mwlFlatpickr
+        [(ngModel)]="dialogData.end"
+        (ngModelChange)="calendarInstance.refresh.next()"
+        [altInput]="true"
+        [convertModelValue]="true"
+        [enableTime]="true"
+        dateFormat="Y-m-dTH:i"
+        altFormat="F j, Y H:i"
+        placeholder="Not set"
+      />
     </mat-form-field>
   </div>
+  <mat-form-field>
+    <mat-label>Message</mat-label>
+    <textarea
+      matInput
+      rows="5"
+      placeholder="Message"
+      [formControl]="formControls.message"
+      (change)="dialogData.meta.message = formControls.message.value; calendarInstance.refresh.next()"
+      required
+    >
+    </textarea>
+    <mat-error *ngIf="formControls.message.invalid">Required field</mat-error>
+  </mat-form-field>
+  <app-csv-extractor
+    [items]="dialogData.meta.phoneList"
+    [label]="'Phone numbers'"
+    (onExtractChanged)="dialogData.meta.phoneList = $event; calendarInstance.refresh.next()"
+  ></app-csv-extractor>
+  <mat-divider></mat-divider>
   <div fxLayout fxLayoutAlign="space-between center">
-    <button mat-icon-button aria-label="Delete button" mat-dialog-close color="warn" (click)="deleteEvent()">
+    <button mat-icon-button aria-label="Delete button" color="warn" (click)="deleteEvent()">
       <mat-icon style="font-size: 16pt">delete</mat-icon>
     </button>
     <span fxFlex="0 1 auto"></span>
     <div fxLayout fxLayoutGap="10px">
-      <button mat-flat-button mat-dialog-close>Close</button>
-      <button mat-flat-button color="primary" mat-dialog-close>Save</button>
+      <button mat-flat-button (click)="close()">Close</button>
+      <button mat-flat-button color="primary" (click)="save()">Save</button>
     </div>
   </div>
 </mat-dialog-content>
