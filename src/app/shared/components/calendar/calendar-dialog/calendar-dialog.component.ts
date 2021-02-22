@@ -77,12 +77,12 @@ export class CalendarDialogComponent {
   }
 
   private _isValidEvent(): boolean {
-    return this.dialogData.title && this.dialogData.meta.message && this.dialogData.meta.phoneList?.length;
+    return this.dialogData.title && this.dialogData.meta.message && this.dialogData.meta?.phoneList?.length;
   }
 
   private _showErrorMessage(): void {
     this.formControls.title.markAsTouched({ onlySelf: true });
     this.formControls.message.markAsTouched({ onlySelf: true });
-    this._toastr.error('All fields is required.');
+    this._toastr.error('All fields are required.');
   }
 }

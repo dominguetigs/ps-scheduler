@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 
@@ -10,22 +10,26 @@ import { MatChipInputEvent, MatChipList } from '@angular/material/chips';
   styleUrls: ['./chips-input.component.scss'],
 })
 export class ChipsInputComponent implements OnInit {
-  selectable = true;
-  removable = true;
-  readonly separatorKeysCodes = [ENTER, COMMA];
-
-  @Input() items: string[] = [];
+  @Input() items: string[];
   @Input() label: string = 'Itens';
   @Input() required: boolean = false;
+  @Input() test: any = [];
+  @Output() itemsChanged: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('chipList')
   chipList: MatChipList;
+
+  selectable = true;
+  removable = true;
+  readonly separatorKeysCodes = [ENTER, COMMA];
 
   // -----------------------------------------------------------------------------------------------------------------
   // Lifecycle Hooks
   // -----------------------------------------------------------------------------------------------------------------
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.items = this.items ?? [];
+  }
 
   // -----------------------------------------------------------------------------------------------------------------
   // Public Methods
@@ -42,6 +46,8 @@ export class ChipsInputComponent implements OnInit {
     if (input) {
       input.value = '';
     }
+
+    this.itemsChanged.emit(this.items);
   }
 
   remove(fruit: string): void {
@@ -50,5 +56,7 @@ export class ChipsInputComponent implements OnInit {
     if (index >= 0) {
       this.items.splice(index, 1);
     }
+
+    this.itemsChanged.emit(this.items);
   }
 }

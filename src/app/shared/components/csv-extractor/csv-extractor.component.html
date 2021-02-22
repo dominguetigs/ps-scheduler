@@ -5,7 +5,7 @@
       <span>Add {{ label | lowercase }} manually or add a .csv extension file.</span>
     </ng-container>
     <ng-template #ManualModeInfoTemplate>
-      <span fxFlex="0 1 90%">Add {{ label | lowercase }} typing and pressing ENTER or SPACE.</span>
+      <span fxFlex="0 1 90%">Add {{ label | lowercase }} typing and pressing ENTER or COMMA.</span>
       <mat-icon class="close-manual-mode-icon pointer" (click)="isExtractMode = true">close</mat-icon>
     </ng-template>
   </div>
@@ -45,7 +45,12 @@
   </div>
   <ng-template #ManualModeTemplate>
     <div class="manual-mode-template">
-      <app-chips-input [items]="items" [label]="label" [required]="true"></app-chips-input>
+      <app-chips-input
+        [items]="items"
+        [label]="label"
+        [required]="true"
+        (itemsChanged)="onExtractChanged.emit($event)"
+      ></app-chips-input>
     </div>
   </ng-template>
 </div>

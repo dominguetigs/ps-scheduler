@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { SidenavService } from '../sidenav.service';
@@ -21,6 +21,7 @@ export class MenuListItemComponent implements OnInit {
 
   @Input() item: NavItem;
   @Input() depth: number = 0;
+  @Output() selectedItemChanged: EventEmitter<any> = new EventEmitter();
 
   constructor(public sidenavService: SidenavService, public router: Router) {
     this._unsubscribeAll = new Subject();
@@ -45,11 +46,13 @@ export class MenuListItemComponent implements OnInit {
 
   onItemSelected(item: NavItem) {
     if (!item.children || !item.children.length) {
-      this.router.navigate([item.route]);
+      item.route && this.router.navigate([item.route]);
     }
 
     if (item.children && item.children.length) {
       this.expanded = !this.expanded;
     }
+
+    this.selectedItemChanged.emit();
   }
 }

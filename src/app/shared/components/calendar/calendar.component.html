@@ -2,7 +2,7 @@
   <!-- Action Header -->
   <div fxLayout fxLayoutAlign="space-between center">
     <div fxLayout fxLayout.lt-sm="column" fxLayoutAlign="center center" fxLayoutAlign.lt-sm="start" fxLayoutGap="10px">
-      <div fxLayout fxLayoutAlign="center center" fxLayoutGap="10px">
+      <div fxLayout fxLayoutAlign="center center" fxLayoutAlign.lt-sm="start center" fxLayoutGap="10px">
         <mat-form-field fxFlex="0 1 150px">
           <mat-label>Select an view</mat-label>
           <mat-select [(ngModel)]="calendar.view">
@@ -11,7 +11,7 @@
         </mat-form-field>
         <button mat-stroked-button color="primary" mwlCalendarToday [(viewDate)]="calendar.viewDate">Today</button>
       </div>
-      <div fxLayout fxLayoutAlign="center center" fxLayoutGap="10px">
+      <div fxLayout fxLayoutAlign="center center" fxLayoutAlign.lt-sm="start center" fxLayoutGap="10px">
         <mat-icon
           class="pointer"
           mwlCalendarPreviousView
