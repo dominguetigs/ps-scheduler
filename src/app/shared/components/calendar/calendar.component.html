@@ -1,10 +1,10 @@
 <ng-container *ngIf="calendar">
   <!-- Action Header -->
   <div fxLayout fxLayoutAlign="space-between center">
-    <div fxLayout fxLayoutAlign="center center" fxLayoutGap="10px">
+    <div fxLayout fxLayout.lt-sm="column" fxLayoutAlign="center center" fxLayoutAlign.lt-sm="start" fxLayoutGap="10px">
       <div fxLayout fxLayoutAlign="center center" fxLayoutGap="10px">
         <mat-form-field fxFlex="0 1 150px">
-          <mat-label>Select an period</mat-label>
+          <mat-label>Select an view</mat-label>
           <mat-select [(ngModel)]="calendar.view">
             <mat-option [value]="v.value" *ngFor="let v of views">{{ v.option }}</mat-option>
           </mat-select>
@@ -31,7 +31,14 @@
         <h2 class="current-date-view">{{ calendar.viewDate | calendarDate: calendar.view + 'ViewTitle':'en' }}</h2>
       </div>
     </div>
-    <button mat-flat-button color="primary" style="padding-left: 10px" (click)="calendar.handleEvent('Clicked')">
+    <button
+      mat-flat-button
+      color="primary"
+      style="padding-left: 10px"
+      (click)="calendar.handleEvent('New')"
+      fxHide
+      fxShow.gt-sm
+    >
       <mat-icon style="margin-right: 10px; font-size: 16pt">add</mat-icon>New
     </button>
   </div>
@@ -70,4 +77,16 @@
     </mwl-calendar-day-view>
   </div>
   <!-- Calendar -->
+
+  <button
+    class="add-event-mobile-button"
+    mat-fab
+    color="primary"
+    aria-label=""
+    (click)="calendar.handleEvent('New')"
+    fxHide
+    fxShow.lt-md
+  >
+    <mat-icon>add</mat-icon>
+  </button>
 </ng-container>

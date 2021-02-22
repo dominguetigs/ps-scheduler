@@ -34,7 +34,7 @@ export class CSVExtractorComponent implements OnInit, OnDestroy {
   // -----------------------------------------------------------------------------------------------------------------
 
   ngOnInit(): void {
-    this.isExtractMode = !this.items.length;
+    this.isExtractMode = !this?.items?.length;
   }
 
   ngOnDestroy(): void {

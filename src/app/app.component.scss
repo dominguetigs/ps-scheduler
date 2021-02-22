@@ -1,1 +1,7 @@
+.page-wrapper {
+  padding: 24px;
 
+  @media only screen and (max-width: 599px) {
+    padding: 12px;
+  }
+}

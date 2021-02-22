@@ -26,9 +26,11 @@
         mwlFlatpickr
         [(ngModel)]="dialogData.start"
         (ngModelChange)="calendarInstance.refresh.next()"
+        [allowInput]="false"
         [altInput]="true"
         [convertModelValue]="true"
         [enableTime]="true"
+        [disableMobile]="true"
         dateFormat="Y-m-dTH:i"
         altFormat="F j, Y H:i"
         placeholder="Not set"
@@ -42,9 +44,11 @@
         mwlFlatpickr
         [(ngModel)]="dialogData.end"
         (ngModelChange)="calendarInstance.refresh.next()"
+        [allowInput]="false"
         [altInput]="true"
         [convertModelValue]="true"
         [enableTime]="true"
+        [disableMobile]="true"
         dateFormat="Y-m-dTH:i"
         altFormat="F j, Y H:i"
         placeholder="Not set"

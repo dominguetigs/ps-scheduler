@@ -8,6 +8,12 @@
   margin: 24px 0;
 }
 
+.add-event-mobile-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+}
+
 ::ng-deep a.action-icon {
   color: white;
   font-size: 9pt;
