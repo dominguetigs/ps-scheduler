@@ -2,6 +2,10 @@
 
 .current-date-view {
   margin: 0;
+
+  @media only screen and (max-width: 599px) {
+    font-size: 18px;
+  }
 }
 
 .calendar-container {

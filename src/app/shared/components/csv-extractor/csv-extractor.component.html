@@ -1,11 +1,13 @@
 <div class="csv-extractor-container">
   <div class="info-container" fxLayout fxLayoutAlign="start center" fxLayoutGap="5px">
-    <mat-icon>info</mat-icon>
+    <mat-icon fxFlexAlign="start">info</mat-icon>
     <ng-container *ngIf="isExtractMode; else ManualModeInfoTemplate">
-      <span>Add {{ label | lowercase }} manually or add a .csv extension file.</span>
+      <span style="line-height: 1.1">Add {{ label | lowercase }} manually or add a .csv extension file.</span>
     </ng-container>
     <ng-template #ManualModeInfoTemplate>
-      <span fxFlex="0 1 90%">Add {{ label | lowercase }} typing and pressing ENTER or COMMA.</span>
+      <span style="line-height: 1.1" fxFlex="0 1 80%"
+        >Add {{ label | lowercase }} typing and pressing ENTER or COMMA.</span
+      >
       <mat-icon class="close-manual-mode-icon pointer" (click)="isExtractMode = true">close</mat-icon>
     </ng-template>
   </div>

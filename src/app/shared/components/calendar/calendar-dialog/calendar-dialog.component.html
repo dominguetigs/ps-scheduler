@@ -1,6 +1,6 @@
-<mat-dialog-content *ngIf="formControls" fxLayout="column" fxLayoutGap="20px">
+<mat-dialog-content *ngIf="formControls" fxLayout="column" fxLayoutGap="15px">
   <div fxLayout fxLayoutAlign="center center" fxLayoutGap="10px">
-    <mat-form-field fxFlex fxFlex.lt-md="0 1 70%">
+    <mat-form-field fxFlex="0 1 70%">
       <mat-label>Event title</mat-label>
       <input
         matInput
@@ -12,12 +12,12 @@
       <mat-error *ngIf="formControls.title.invalid">Required field</mat-error>
     </mat-form-field>
     <app-color-picker
-      fxFlex="0 1 auto"
+      fxFlex
       [selected]="dialogData.color"
       (onSelectChanged)="dialogData.color = $event; calendarInstance.refresh.next()"
     ></app-color-picker>
   </div>
-  <div fxLayout fxLayout.lt-md="column" fxLayoutAlign.gt-sm="center center" fxLayoutGap="10px">
+  <div fxLayout fxLayout.lt-md="column" fxLayoutAlign.gt-sm="center center" fxLayoutGap="10px" fxLayoutGap.lt-md="15px">
     <mat-form-field fxFlex>
       <mat-label>Starts at</mat-label>
       <input
@@ -74,14 +74,15 @@
     (onExtractChanged)="dialogData.meta.phoneList = $event; calendarInstance.refresh.next()"
   ></app-csv-extractor>
   <mat-divider></mat-divider>
-  <div fxLayout fxLayoutAlign="space-between center">
-    <button mat-icon-button aria-label="Delete button" color="warn" (click)="deleteEvent()">
-      <mat-icon style="font-size: 16pt">delete</mat-icon>
-    </button>
-    <span fxFlex="0 1 auto"></span>
-    <div fxLayout fxLayoutGap="10px">
-      <button mat-flat-button (click)="close()">Close</button>
-      <button mat-flat-button color="primary" (click)="save()">Save</button>
-    </div>
-  </div>
 </mat-dialog-content>
+
+<mat-dialog-actions fxLayout fxLayoutAlign="space-between center">
+  <button mat-icon-button aria-label="Delete button" color="warn" (click)="deleteEvent()">
+    <mat-icon style="font-size: 16pt">delete</mat-icon>
+  </button>
+  <span fxFlex="0 1 auto"></span>
+  <div fxLayout fxLayoutGap="10px">
+    <button mat-flat-button (click)="close()">Close</button>
+    <button mat-flat-button color="primary" (click)="save()">Save</button>
+  </div>
+</mat-dialog-actions>
