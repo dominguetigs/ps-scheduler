@@ -4,7 +4,7 @@
     <div fxLayout fxLayout.lt-sm="column" fxLayoutAlign="center center" fxLayoutAlign.lt-sm="start" fxLayoutGap="10px">
       <div fxLayout fxLayoutAlign="center center" fxLayoutAlign.lt-sm="start center" fxLayoutGap="10px">
         <mat-form-field fxFlex="0 1 150px">
-          <mat-label>Select an view</mat-label>
+          <mat-label>Select a period</mat-label>
           <mat-select [(ngModel)]="calendar.view">
             <mat-option [value]="v.value" *ngFor="let v of views">{{ v.option }}</mat-option>
           </mat-select>

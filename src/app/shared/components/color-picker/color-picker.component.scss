@@ -19,27 +19,28 @@
   }
 }
 
-// Overrides mat-menu
 ::ng-deep .mat-menu-panel {
-  min-width: 70px;
-  width: 70px;
+  &.color-picker-menu {
+    min-width: 70px;
+    width: 70px;
 
-  .color-option {
-    width: 18px;
-    height: 18px;
-    border-radius: 9px;
-    margin: 3px;
+    .color-option {
+      width: 18px;
+      height: 18px;
+      border-radius: 9px;
+      margin: 3px;
 
-    &:hover {
-      transform: scale(1.1);
-    }
+      &:hover {
+        transform: scale(1.1);
+      }
 
-    .mat-icon {
-      font-size: 14px;
-      font-weight: 600;
-      width: 14px;
-      height: 14px;
-      color: $white;
+      .mat-icon {
+        font-size: 14px;
+        font-weight: 600;
+        width: 14px;
+        height: 14px;
+        color: $white;
+      }
     }
   }
 }
