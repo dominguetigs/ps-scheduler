@@ -94,13 +94,13 @@ The project was developed using the following technologies and libraries:
   - It is **necessary** to have **[Node.js](https://nodejs.org/en/)** installed on the machine in the lts version.
   - Also, you **need** to have a package manager be it **[NPM](https://www.npmjs.com/)** or **[Yarn](https://yarnpkg.com/)**.
 
-1. Do a clone:
+1. Clone the repository:
 
 ```sh
   $ git clone git@github.com:dominguetigs/ps-scheduler.git
 ```
 
-2. Running the Application:
+2. Run the Application:
 
 ```sh
   # Install the dependencies
