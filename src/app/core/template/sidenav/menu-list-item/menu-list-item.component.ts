@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { SidenavService } from '../sidenav.service';
 
-import { NavItem } from '../nav-item.interface';
+import { INavItem } from '../interfaces/nav-item.interface';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
@@ -19,7 +19,7 @@ export class MenuListItemComponent implements OnInit {
 
   @HostBinding('attr.aria-expanded') ariaExpanded = this.expanded;
 
-  @Input() item: NavItem;
+  @Input() item: INavItem;
   @Input() depth: number = 0;
   @Output() selectedItemChanged: EventEmitter<any> = new EventEmitter();
 
@@ -44,7 +44,7 @@ export class MenuListItemComponent implements OnInit {
   // Public Methods
   // -----------------------------------------------------------------------------------------------------------------
 
-  onItemSelected(item: NavItem) {
+  onItemSelected(item: INavItem) {
     if (!item.children || !item.children.length) {
       item.route && this.router.navigate([item.route]);
     }

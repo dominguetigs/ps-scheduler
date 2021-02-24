@@ -6,7 +6,7 @@
     </div>
     <mat-nav-list class="sidenav-list" fxLayout="column">
       <app-menu-list-item
-        *ngFor="let item of menu"
+        *ngFor="let item of menu?.pages"
         [item]="item"
         (selectedItemChanged)="mode === 'over' && sidenav.close()"
       ></app-menu-list-item>
@@ -14,17 +14,8 @@
       <div fxHide fxShow.lt-md>
         <mat-divider></mat-divider>
         <app-menu-list-item
-          [item]="{
-            displayName: 'Settings',
-            iconName: 'settings'
-          }"
-          (selectedItemChanged)="mode === 'over' && sidenav.close()"
-        ></app-menu-list-item>
-        <app-menu-list-item
-          [item]="{
-            displayName: 'Logout',
-            iconName: 'logout'
-          }"
+          *ngFor="let item of menu?.extra"
+          [item]="item"
           (selectedItemChanged)="mode === 'over' && sidenav.close()"
         ></app-menu-list-item>
       </div>

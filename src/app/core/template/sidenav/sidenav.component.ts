@@ -5,10 +5,11 @@ import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { menu } from './menu.constant';
-import { NavItem } from './nav-item.interface';
-
 import { SidenavService } from './sidenav.service';
+
+import { IMenu } from './interfaces/menu.interface';
+
+import { MENU } from './menu.constant';
 
 @Component({
   selector: 'app-sidenav',
@@ -20,7 +21,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   sidenav: MatSidenav;
 
   mode: MatDrawerMode;
-  menu: NavItem[] = menu;
+  menu: IMenu = MENU;
   opened: boolean = true;
 
   private _unsubscribeAll: Subject<any>;

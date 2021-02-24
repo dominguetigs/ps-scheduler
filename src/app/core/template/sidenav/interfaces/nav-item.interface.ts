@@ -1,7 +1,7 @@
-export interface NavItem {
+export interface INavItem {
   displayName: string;
   disabled?: boolean;
   iconName: string;
   route?: string;
-  children?: NavItem[];
+  children?: INavItem[];
 }
