@@ -12,11 +12,11 @@ import { PREDEFINED_COLORS } from 'src/app/shared/components/color-picker/predef
   styleUrls: ['./scheduler.component.scss'],
 })
 export class SchedulerComponent {
-  events: CalendarEvent[] = [
+  schedulers: CalendarEvent[] = [
     {
       start: subDays(startOfDay(new Date()), 1),
       end: addDays(new Date(), 1),
-      title: 'Event 1',
+      title: 'Scheduler 1',
       color: PREDEFINED_COLORS[0],
       allDay: true,
       resizable: {
@@ -32,7 +32,7 @@ export class SchedulerComponent {
     {
       start: addHours(startOfDay(new Date()), 2),
       end: addHours(new Date(), 2),
-      title: 'Event 4',
+      title: 'Scheduler 2',
       color: PREDEFINED_COLORS[7],
       resizable: {
         beforeStart: true,

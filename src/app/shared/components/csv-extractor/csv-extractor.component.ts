@@ -14,16 +14,16 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./csv-extractor.component.scss'],
 })
 export class CSVExtractorComponent implements OnInit, OnDestroy {
+  isExtractMode: boolean;
+
+  private _unsubscribeAll: Subject<any>;
+
   @Input() items = [];
   @Input() label: string = 'Items';
   @Output() onExtractChanged: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('fileInput')
   fileInput: any;
-
-  isExtractMode: boolean;
-
-  private _unsubscribeAll: Subject<any>;
 
   constructor(private _ngxCsvParser: NgxCsvParser, private _toastr: ToastrService) {
     this._unsubscribeAll = new Subject();

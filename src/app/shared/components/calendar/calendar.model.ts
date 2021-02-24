@@ -111,7 +111,6 @@ export class Calendar {
         cssClass: 'action-icon',
         onClick: ({ event }: { event: CalendarEvent }): void => {
           this.events = this.events.filter((iEvent) => iEvent !== event);
-          // this.handleEvent('Deleted', event);
         },
       },
     ];

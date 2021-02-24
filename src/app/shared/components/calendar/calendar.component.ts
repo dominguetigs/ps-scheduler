@@ -19,12 +19,12 @@ import { CALENDAR_VIEWS } from './calendar-views.constant';
   styleUrls: ['./calendar.component.scss'],
 })
 export class CalendarComponent implements OnInit, OnDestroy {
-  @Input() events: CalendarEvent[] = [];
-
   calendar: Calendar;
   views: ICalendarView[];
 
   private _unsubscribeAll: Subject<any>;
+
+  @Input() events: CalendarEvent[] = [];
 
   constructor(private _dialog: MatDialog) {
     this.views = CALENDAR_VIEWS;

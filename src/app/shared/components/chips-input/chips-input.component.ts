@@ -10,6 +10,11 @@ import { MatChipInputEvent, MatChipList } from '@angular/material/chips';
   styleUrls: ['./chips-input.component.scss'],
 })
 export class ChipsInputComponent implements OnInit {
+  selectable = true;
+  removable = true;
+
+  readonly separatorKeysCodes = [ENTER, COMMA];
+
   @Input() items: string[];
   @Input() label: string = 'Itens';
   @Input() required: boolean = false;
@@ -18,10 +23,6 @@ export class ChipsInputComponent implements OnInit {
 
   @ViewChild('chipList')
   chipList: MatChipList;
-
-  selectable = true;
-  removable = true;
-  readonly separatorKeysCodes = [ENTER, COMMA];
 
   // -----------------------------------------------------------------------------------------------------------------
   // Lifecycle Hooks

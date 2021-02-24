@@ -18,9 +18,8 @@ import { Calendar } from '../calendar.model';
 export class CalendarDialogComponent {
   calendarInstance: Calendar;
   dialogData: any;
-  isEditMode: boolean;
-
   formControls: { [key: string]: FormControl };
+  isEditMode: boolean;
 
   constructor(
     private _dialogRef: MatDialogRef<CalendarDialogComponent>,

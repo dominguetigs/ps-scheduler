@@ -17,14 +17,14 @@ import { MENU } from './menu.constant';
   styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent implements OnInit, OnDestroy {
-  @ViewChild('sidenav')
-  sidenav: MatSidenav;
-
   mode: MatDrawerMode;
   menu: IMenu = MENU;
   opened: boolean = true;
 
   private _unsubscribeAll: Subject<any>;
+
+  @ViewChild('sidenav')
+  sidenav: MatSidenav;
 
   constructor(private _media: MediaObserver, private _sidenavService: SidenavService) {
     this._unsubscribeAll = new Subject();

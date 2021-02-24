@@ -10,8 +10,8 @@ import { PREDEFINED_COLORS } from './predefined-colors.constant';
   styleUrls: ['./color-picker.component.scss'],
 })
 export class ColorPickerComponent {
+  predefinedColors = PREDEFINED_COLORS;
+
   @Input() selected: IColor = PREDEFINED_COLORS[0];
   @Output() onSelectChanged: EventEmitter<IColor> = new EventEmitter();
-
-  predefinedColors = PREDEFINED_COLORS;
 }
