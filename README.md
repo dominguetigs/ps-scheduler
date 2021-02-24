@@ -22,6 +22,7 @@
 
 <p align="center">
   <a href="#about">About</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#access-links">Access links</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#how-to-use">How to use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#how-to-contribute">How to contribute</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -40,6 +41,13 @@
 ## :bookmark: About
 
 The <strong>Scheduler</strong> is a Web and Mobile application to help people schedule messages that will be sent to some contacts (the contacts can be informed by importing a csv file with the list of phone numbers or can be done by adding manually) for a certain day (s) and right time.
+
+<a id="access-links"></a>
+
+## :link: Access links
+
+- [Demo](https://ps-scheduler.vercel.app)
+- [Figma](https://www.figma.com/file/syUya1xUMjDSNw4Luh8CI2/Scheduler?node-id=0%3A1)
 
 <a id="technologies"></a>
 
