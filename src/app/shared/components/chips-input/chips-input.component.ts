@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { ENTER } from '@angular/cdk/keycodes';
 
 import { MatChipInputEvent, MatChipList } from '@angular/material/chips';
 
@@ -51,8 +51,8 @@ export class ChipsInputComponent implements OnInit {
     this.itemsChanged.emit(this.items);
   }
 
-  remove(fruit: string): void {
-    const index = this.items.indexOf(fruit);
+  remove(item: string): void {
+    const index = this.items.indexOf(item);
 
     if (index >= 0) {
       this.items.splice(index, 1);
