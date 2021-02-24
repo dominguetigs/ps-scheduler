@@ -26,7 +26,8 @@
   <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#how-to-use">How to use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#how-to-contribute">How to contribute</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#license">License</a>
+  <a href="#extra-information">Extra information</a>
+
 </p>
 
 <h3 align="center">
@@ -130,6 +131,12 @@ The project was developed using the following technologies and libraries:
 ## :memo: License
 
 This project is under the MIT license. See the [LICENSE](LICENSE.md) file for more details.
+
+<a id="extra-information"></a>
+
+## :information_source: Extra information
+
+There is a file [example.csv](.github/example.csv) for testing purposes in extracting the phone book. :smiley:
 
 ---
 
