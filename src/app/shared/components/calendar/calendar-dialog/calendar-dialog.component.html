@@ -1,6 +1,6 @@
 <mat-dialog-content *ngIf="formControls" fxLayout="column" fxLayoutGap="15px">
   <div fxLayout fxLayoutAlign="center center" fxLayoutGap="10px">
-    <mat-form-field fxFlex>
+    <mat-form-field fxFlex="0 0 calc(100% - 72px)">
       <mat-label>Event title</mat-label>
       <input
         matInput
@@ -12,8 +12,7 @@
       <mat-error *ngIf="formControls.title.invalid">Required field</mat-error>
     </mat-form-field>
     <app-color-picker
-      fxFlex="0 1 62px"
-      fxFlex.lt-sm="0 1 50px"
+      fxFlex="0 0 62px"
       [selected]="dialogData.color"
       (onSelectChanged)="dialogData.color = $event; calendarInstance.refresh.next()"
     ></app-color-picker>
@@ -70,7 +69,6 @@
     [label]="'Phone numbers'"
     (onExtractChanged)="dialogData.meta.phoneList = $event; calendarInstance.refresh.next()"
   ></app-csv-extractor>
-  <mat-divider></mat-divider>
 </mat-dialog-content>
 
 <mat-dialog-actions fxLayout fxLayoutAlign="space-between center">
