@@ -36,14 +36,21 @@ export class Calendar {
   // Public Methods
   // -----------------------------------------------------------------------------------------------------------------
 
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-    if (isSameMonth(date, this.viewDate)) {
-      this.activeDayIsOpen = !((isSameDay(this.viewDate, date) && this.activeDayIsOpen) || !events.length);
-      this.viewDate = date;
-    }
+  calendarClicked($event: { date: Date; events?: CalendarEvent[] }): void {
+    const { date, events } = $event;
 
-    if (!events.length) {
-      this.addEvent(date);
+    if (events) {
+      if (isSameMonth(date, this.viewDate)) {
+        this.activeDayIsOpen = !((isSameDay(this.viewDate, date) && this.activeDayIsOpen) || !events.length);
+        this.viewDate = date;
+      }
+
+      if (!events.length) {
+        this.addEvent(startOfDay(date), endOfDay(date));
+        this.handleEvent('new', this.events[this.events.length - 1]);
+      }
+    } else {
+      this.addEvent(date, endOfDay(date));
       this.handleEvent('new', this.events[this.events.length - 1]);
     }
   }
@@ -72,13 +79,13 @@ export class Calendar {
     this.handleEventChanged.next({ action, event: resultEvent });
   }
 
-  addEvent(date = new Date()): void {
+  addEvent(startDate?: Date, endDate?: Date): void {
     this.events = [
       ...this.events,
       {
         title: 'New scheduler',
-        start: startOfDay(date),
-        end: endOfDay(date),
+        start: startDate ?? startOfDay(new Date()),
+        end: endDate ?? endOfDay(new Date()),
         color: PREDEFINED_COLORS[0],
         draggable: true,
         resizable: {

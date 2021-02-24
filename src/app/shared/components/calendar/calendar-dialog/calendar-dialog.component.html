@@ -1,6 +1,6 @@
 <mat-dialog-content *ngIf="formControls" fxLayout="column" fxLayoutGap="15px">
   <div fxLayout fxLayoutAlign="center center" fxLayoutGap="10px">
-    <mat-form-field fxFlex="0 1 70%">
+    <mat-form-field fxFlex>
       <mat-label>Event title</mat-label>
       <input
         matInput
@@ -12,7 +12,8 @@
       <mat-error *ngIf="formControls.title.invalid">Required field</mat-error>
     </mat-form-field>
     <app-color-picker
-      fxFlex
+      fxFlex="0 1 62px"
+      fxFlex.lt-sm="0 1 50px"
       [selected]="dialogData.color"
       (onSelectChanged)="dialogData.color = $event; calendarInstance.refresh.next()"
     ></app-color-picker>

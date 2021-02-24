@@ -45,7 +45,7 @@
       [events]="calendar.events"
       [refresh]="calendar.refresh"
       [activeDayIsOpen]="calendar.activeDayIsOpen"
-      (dayClicked)="calendar.dayClicked($event.day)"
+      (dayClicked)="calendar.calendarClicked($event.day)"
       (eventClicked)="calendar.handleEvent('edit', $event.event)"
       (eventTimesChanged)="calendar.eventTimesChanged($event)"
     >
@@ -55,6 +55,8 @@
       [viewDate]="calendar.viewDate"
       [events]="calendar.events"
       [refresh]="calendar.refresh"
+      (dayHeaderClicked)="calendar.calendarClicked($event.day)"
+      (hourSegmentClicked)="calendar.calendarClicked($event)"
       (eventClicked)="calendar.handleEvent('edit', $event.event)"
       (eventTimesChanged)="calendar.eventTimesChanged($event)"
     >
@@ -64,6 +66,7 @@
       [viewDate]="calendar.viewDate"
       [events]="calendar.events"
       [refresh]="calendar.refresh"
+      (hourSegmentClicked)="calendar.calendarClicked($event)"
       (eventClicked)="calendar.handleEvent('edit', $event.event)"
       (eventTimesChanged)="calendar.eventTimesChanged($event)"
     >
