@@ -13,7 +13,7 @@ export class ChipsInputComponent implements OnInit {
   selectable = true;
   removable = true;
 
-  readonly separatorKeysCodes = [ENTER, COMMA];
+  readonly separatorKeysCodes = [ENTER];
 
   @Input() items: string[];
   @Input() label: string = 'Itens';

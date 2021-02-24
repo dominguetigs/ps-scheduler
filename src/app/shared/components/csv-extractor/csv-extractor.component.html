@@ -5,9 +5,7 @@
       <span style="line-height: 1.1">Add {{ label | lowercase }} manually or add a .csv extension file.</span>
     </ng-container>
     <ng-template #ManualModeInfoTemplate>
-      <span style="line-height: 1.1" fxFlex="0 1 80%"
-        >Add {{ label | lowercase }} typing and pressing ENTER or COMMA.</span
-      >
+      <span style="line-height: 1.1" fxFlex="0 1 80%">Add {{ label | lowercase }} typing and pressing ENTER.</span>
       <mat-icon class="close-manual-mode-icon pointer" (click)="isExtractMode = true">close</mat-icon>
     </ng-template>
   </div>
