@@ -1,0 +1,15 @@
+@mixin generate-font-sizes {
+  $max: 30;
+  $offset: 2;
+  $unit: 'pt';
+  $i: 6;
+
+  @while $i <= $max {
+    .font-size-#{$i} {
+      font-size: #{$i + $unit};
+    }
+    $i: $i + $offset;
+  }
+}
+
+@include generate-font-sizes();

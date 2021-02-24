@@ -6,9 +6,14 @@
   fxLayoutAlign.gt-sm="center center"
   class="menu-list-item"
 >
-  <mat-icon class="route-icon" fxHide fxShow.lt-md>{{ item.iconName }}</mat-icon>
-  <mat-icon class="route-icon" [matTooltip]="item.displayName" matTooltipPosition="right" fxHide fxShow.gt-sm>{{
-    item.iconName
-  }}</mat-icon>
-  <span class="menu-item-text" fxHide fxShow.lt-md>{{ item.displayName }}</span>
+  <mat-icon class="route-icon font-size-16" fxHide fxShow.lt-md>{{ item.iconName }}</mat-icon>
+  <mat-icon
+    class="route-icon font-size-16"
+    [matTooltip]="item.displayName"
+    matTooltipPosition="right"
+    fxHide
+    fxShow.gt-sm
+    >{{ item.iconName }}</mat-icon
+  >
+  <span class="menu-item-text font-size-10" fxHide fxShow.lt-md>{{ item.displayName }}</span>
 </a>

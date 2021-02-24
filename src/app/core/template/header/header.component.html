@@ -9,18 +9,9 @@
     </button>
     <app-profile class="pointer" style="margin-left: 24px" [matMenuTriggerFor]="menu" fxHide fxShow.gt-sm></app-profile>
     <mat-menu #menu="matMenu" xPosition="before">
-      <button mat-menu-item>
-        <mat-icon style="font-size: 16pt">person</mat-icon>
-        <span style="font-size: 10pt">Profile</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon style="font-size: 16pt">settings</mat-icon>
-        <span style="font-size: 10pt">Settings</span>
-      </button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item>
-        <mat-icon style="font-size: 16pt">logout</mat-icon>
-        <span style="font-size: 10pt">Logout</span>
+      <button mat-menu-item *ngFor="let item of menuItems">
+        <mat-icon class="font-size-16">{{ item.icon }}</mat-icon>
+        <span class="font-size-10">{{ item.label }}</span>
       </button>
     </mat-menu>
   </div>

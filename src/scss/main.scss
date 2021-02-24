@@ -1,5 +1,5 @@
 // 1. abstracts
-@import 'abstracts/colors', 'abstracts/spacings';
+@import 'abstracts/colors', 'abstracts/mixins', 'abstracts/spacings';
 
 // 2. Base
 @import 'base/base', 'base/reset', 'base/typography';
