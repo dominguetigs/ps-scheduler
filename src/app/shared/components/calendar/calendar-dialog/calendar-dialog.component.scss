@@ -1,0 +1,21 @@
+@media only screen and (max-width: 599px) {
+  .mat-dialog-actions {
+    button {
+      &.mat-flat-button {
+        padding: 0;
+        min-width: 50px;
+        width: 50px;
+        font-size: 12px;
+      }
+
+      &.mat-icon-button {
+        .mat-icon {
+          font-size: 18px;
+          width: 18px;
+          height: 18px;
+          line-height: 18px;
+        }
+      }
+    }
+  }
+}
