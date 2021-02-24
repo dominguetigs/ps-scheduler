@@ -34,7 +34,7 @@
   <a
     href="https://ps-scheduler.vercel.app"
     target="_blank"
-  >Acess the demo</a>
+  >Access the demo</a>
 </h3>
 
 <a id="about"></a>
