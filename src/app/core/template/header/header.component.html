@@ -7,7 +7,7 @@
     <button mat-icon-button matTooltip="Notifications">
       <mat-icon matBadge="7" matBadgeColor="primary" matBadgeSize="small">notifications</mat-icon>
     </button>
-    <app-profile class="pointer" style="margin-left: 24px" [matMenuTriggerFor]="menu" fxHide fxShow.gt-sm></app-profile>
+    <app-profile class="pointer ml-24" [matMenuTriggerFor]="menu" fxHide fxShow.gt-sm></app-profile>
     <mat-menu #menu="matMenu" xPosition="before">
       <button mat-menu-item *ngFor="let item of menuItems">
         <mat-icon class="font-size-16">{{ item.icon }}</mat-icon>

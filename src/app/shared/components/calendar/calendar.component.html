@@ -31,15 +31,8 @@
         <h2 class="current-date-view">{{ calendar.viewDate | calendarDate: calendar.view + 'ViewTitle':'en' }}</h2>
       </div>
     </div>
-    <button
-      mat-flat-button
-      color="primary"
-      style="padding-left: 10px"
-      (click)="calendar.handleEvent('New')"
-      fxHide
-      fxShow.gt-sm
-    >
-      <mat-icon style="margin-right: 10px" class="font-size-16">add</mat-icon>New
+    <button mat-flat-button color="primary" class="pl-10" (click)="calendar.handleEvent('New')" fxHide fxShow.gt-sm>
+      <mat-icon class="font-size-16 mr-10">add</mat-icon>New
     </button>
   </div>
   <!-- Action Header -->
