@@ -31,7 +31,7 @@
         <h2 class="current-date-view">{{ calendar.viewDate | calendarDate: calendar.view + 'ViewTitle':'en' }}</h2>
       </div>
     </div>
-    <button mat-flat-button color="primary" class="pl-10" (click)="calendar.handleEvent('New')" fxHide fxShow.gt-sm>
+    <button mat-flat-button color="primary" class="pl-10" (click)="calendar.handleEvent('new')" fxHide fxShow.gt-sm>
       <mat-icon class="font-size-16 mr-10">add</mat-icon>New
     </button>
   </div>
@@ -46,7 +46,7 @@
       [refresh]="calendar.refresh"
       [activeDayIsOpen]="calendar.activeDayIsOpen"
       (dayClicked)="calendar.dayClicked($event.day)"
-      (eventClicked)="calendar.handleEvent('Edited', $event.event)"
+      (eventClicked)="calendar.handleEvent('edit', $event.event)"
       (eventTimesChanged)="calendar.eventTimesChanged($event)"
     >
     </mwl-calendar-month-view>
@@ -55,7 +55,7 @@
       [viewDate]="calendar.viewDate"
       [events]="calendar.events"
       [refresh]="calendar.refresh"
-      (eventClicked)="calendar.handleEvent('Edited', $event.event)"
+      (eventClicked)="calendar.handleEvent('edit', $event.event)"
       (eventTimesChanged)="calendar.eventTimesChanged($event)"
     >
     </mwl-calendar-week-view>
@@ -64,7 +64,7 @@
       [viewDate]="calendar.viewDate"
       [events]="calendar.events"
       [refresh]="calendar.refresh"
-      (eventClicked)="calendar.handleEvent('Edited', $event.event)"
+      (eventClicked)="calendar.handleEvent('edit', $event.event)"
       (eventTimesChanged)="calendar.eventTimesChanged($event)"
     >
     </mwl-calendar-day-view>
@@ -76,7 +76,7 @@
     mat-fab
     color="primary"
     aria-label=""
-    (click)="calendar.handleEvent('New')"
+    (click)="calendar.handleEvent('new')"
     fxHide
     fxShow.lt-md
   >

@@ -38,11 +38,13 @@ export class Calendar {
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
-      this.activeDayIsOpen = !(
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
-      );
+      this.activeDayIsOpen = !((isSameDay(this.viewDate, date) && this.activeDayIsOpen) || !events.length);
       this.viewDate = date;
+    }
+
+    if (!events.length) {
+      this.addEvent(date);
+      this.handleEvent('new', this.events[this.events.length - 1]);
     }
   }
 
@@ -60,16 +62,23 @@ export class Calendar {
   }
 
   handleEvent(action: string, event?: CalendarEvent): void {
-    this.handleEventChanged.next({ action, event });
+    let resultEvent = event;
+
+    if (!resultEvent) {
+      this.addEvent();
+      resultEvent = this.events[this.events.length - 1];
+    }
+
+    this.handleEventChanged.next({ action, event: resultEvent });
   }
 
-  addEvent(): void {
+  addEvent(date = new Date()): void {
     this.events = [
       ...this.events,
       {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
+        title: 'New scheduler',
+        start: startOfDay(date),
+        end: endOfDay(date),
         color: PREDEFINED_COLORS[0],
         draggable: true,
         resizable: {
@@ -78,6 +87,7 @@ export class Calendar {
         },
         meta: {
           message: '',
+          phoneList: [],
         },
       },
     ];
@@ -102,7 +112,7 @@ export class Calendar {
         a11yLabel: 'Edit',
         cssClass: 'action-icon',
         onClick: ({ event }: { event: CalendarEvent }): void => {
-          this.handleEvent('Edited', event);
+          this.handleEvent('edit', event);
         },
       },
       {

@@ -18,6 +18,7 @@ import { CalendarDialogComponent } from './components/calendar/calendar-dialog/c
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ChipsInputComponent } from './components/chips-input/chips-input.component';
 import { ColorPickerComponent } from './components/color-picker/color-picker.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { CSVExtractorComponent } from './components/csv-extractor/csv-extractor.component';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { CSVExtractorComponent } from './components/csv-extractor/csv-extractor.
     CalendarComponent,
     ChipsInputComponent,
     ColorPickerComponent,
+    ConfirmationDialogComponent,
     CSVExtractorComponent,
   ],
   imports: [
@@ -67,6 +69,7 @@ import { CSVExtractorComponent } from './components/csv-extractor/csv-extractor.
     CalendarComponent,
     ChipsInputComponent,
     ColorPickerComponent,
+    ConfirmationDialogComponent,
     CSVExtractorComponent,
   ],
 })

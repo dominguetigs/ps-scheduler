@@ -1,11 +1,20 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnDestroy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { isEqual } from 'date-fns';
+
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+import * as _ from 'lodash';
 
 import { ToastrService } from 'ngx-toastr';
 
 import { CalendarEvent } from 'angular-calendar';
+
+import { ConfirmationDialogComponent } from '../../confirmation-dialog/confirmation-dialog.component';
 
 import { Calendar } from '../calendar.model';
 
@@ -15,27 +24,38 @@ import { Calendar } from '../calendar.model';
   templateUrl: './calendar-dialog.component.html',
   styleUrls: ['./calendar-dialog.component.scss'],
 })
-export class CalendarDialogComponent {
+export class CalendarDialogComponent implements OnDestroy {
   calendarInstance: Calendar;
   dialogData: any;
   formControls: { [key: string]: FormControl };
   isEditMode: boolean;
 
+  private _dialogDataCache: CalendarEvent;
+  private _unsubscribeAll: Subject<any>;
+
   constructor(
     private _dialogRef: MatDialogRef<CalendarDialogComponent>,
     private _toastr: ToastrService,
+    private _dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) data: { action: string; data: CalendarEvent; calendarInstance: Calendar }
   ) {
-    this.isEditMode = !!data?.data;
+    this.isEditMode = data.action !== 'new';
     this.calendarInstance = data?.calendarInstance;
+    this.dialogData = data.data;
+    this._dialogDataCache = _.cloneDeep(this.dialogData);
 
-    if (data?.data) {
-      this.dialogData = data.data;
-    } else {
-      data.calendarInstance.addEvent();
-      this.dialogData = data.calendarInstance.events[data.calendarInstance.events.length - 1];
-    }
+    this._unsubscribeAll = new Subject();
+
     this._createFormControls();
+  }
+
+  // -----------------------------------------------------------------------------------------------------------------
+  // Lifecycle Hooks
+  // -----------------------------------------------------------------------------------------------------------------
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
   }
 
   // -----------------------------------------------------------------------------------------------------------------
@@ -48,11 +68,42 @@ export class CalendarDialogComponent {
     this._dialogRef.close();
   }
 
+  updateEvent(event: CalendarEvent): void {
+    const index = this.calendarInstance.events.indexOf(this.dialogData);
+    this.calendarInstance.events.splice(index, 1);
+    this.calendarInstance.events.push(event);
+    this.calendarInstance.refresh.next();
+    this._dialogRef.close();
+  }
+
   close(): void {
-    if (this._isValidEvent()) {
+    if (this._dialogDataChanged()) {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.data = {
+        actions: {
+          no: 'Cancel',
+          yes: `Discard`,
+        },
+        message: 'Discard unsaved changes?',
+      };
+
+      this._dialog
+        .open(ConfirmationDialogComponent, dialogConfig)
+        .afterClosed()
+        .pipe(takeUntil(this._unsubscribeAll))
+        .subscribe((response) => {
+          if (response) {
+            if (this.isEditMode) {
+              this.updateEvent(this._dialogDataCache);
+            } else {
+              this.deleteEvent();
+            }
+          }
+        });
+    } else if (this.isEditMode) {
       this._dialogRef.close();
     } else {
-      this._showErrorMessage();
+      this.deleteEvent();
     }
   }
 
@@ -67,6 +118,41 @@ export class CalendarDialogComponent {
   // -----------------------------------------------------------------------------------------------------------------
   // Private Methods
   // -----------------------------------------------------------------------------------------------------------------
+
+  private _dialogDataChanged(): boolean {
+    for (const key of ['start', 'end', 'title', 'color', 'meta']) {
+      switch (key) {
+        case 'start':
+        case 'end':
+          if (!isEqual(this.dialogData[key] as Date, this._dialogDataCache[key] as Date)) {
+            return true;
+          }
+          break;
+        case 'title':
+          if (this.dialogData[key] !== this._dialogDataCache[key]) {
+            return true;
+          }
+          break;
+
+        case 'color':
+          if (this.dialogData[key]?.primary !== this._dialogDataCache[key]?.primary) {
+            return true;
+          }
+          break;
+        case 'meta':
+          if (this.dialogData[key].message !== this._dialogDataCache[key].message) {
+            return true;
+          } else if (
+            _.differenceWith(this.dialogData[key].phoneList, this._dialogDataCache[key].phoneList, _.isEqual).length ||
+            _.differenceWith(this._dialogDataCache[key].phoneList, this.dialogData[key].phoneList, _.isEqual).length
+          ) {
+            return true;
+          }
+      }
+    }
+
+    return false;
+  }
 
   private _createFormControls(): void {
     this.formControls = {

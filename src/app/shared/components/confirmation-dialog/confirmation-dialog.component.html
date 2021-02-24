@@ -1,0 +1,8 @@
+<mat-dialog-content>
+  {{ data?.message }}
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout fxLayoutAlign="end center" fxLayoutGap="10px">
+  <button mat-flat-button mat-dialog-close>{{ data?.actions?.no || 'No' }}</button>
+  <button mat-flat-button color="primary" (click)="confirm()">{{ data?.actions?.yes || 'Yes' }}</button>
+</mat-dialog-actions>
