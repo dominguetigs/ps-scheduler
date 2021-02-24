@@ -61,7 +61,7 @@ export class CSVExtractorComponent implements OnInit, OnDestroy {
         },
         (error: NgxCSVParserError) => {
           console.log(error);
-          this._toastr.error('An error occurred in the process extraction.');
+          this._toastr.error('An error occurred in the extraction process.');
         }
       );
   }
