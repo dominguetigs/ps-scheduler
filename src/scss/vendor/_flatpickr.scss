@@ -1,1 +1,50 @@
 @import url('https://unpkg.com/flatpickr@4.6.6/dist/flatpickr.css');
+
+$flatpickr-calendar-mobile-width: 250px;
+
+.flatpickr-calendar {
+  .flatpickr-time {
+    .flatpickr-am-pm {
+      color: #7266ed;
+      font-weight: 500;
+    }
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .flatpickr-calendar {
+    width: $flatpickr-calendar-mobile-width;
+    font-size: 10pt;
+
+    .flatpickr-innerContainer {
+      .flatpickr-rContainer {
+        width: $flatpickr-calendar-mobile-width;
+        height: 180px;
+
+        .flatpickr-days {
+          width: $flatpickr-calendar-mobile-width;
+
+          .dayContainer {
+            width: $flatpickr-calendar-mobile-width;
+            min-width: $flatpickr-calendar-mobile-width;
+
+            .flatpickr-day {
+              max-width: 30px;
+              height: 30px;
+              line-height: 30px;
+
+              &.today {
+                border-color: #9c94f2;
+              }
+
+              &.selected {
+                border-color: #7266ed;
+                background-color: #7266ed;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
