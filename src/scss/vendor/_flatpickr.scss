@@ -3,6 +3,29 @@
 $flatpickr-calendar-mobile-width: 250px;
 
 .flatpickr-calendar {
+  .flatpickr-day {
+    &.today {
+      border-color: #9c94f2;
+
+      &:hover {
+        background-color: #9c94f2;
+      }
+    }
+
+    &.selected {
+      border-color: #7266ed;
+      background-color: #7266ed;
+
+      &:hover {
+        background-color: #5f53e8;
+      }
+    }
+
+    &:hover {
+      background-color: #d5d1fa;
+    }
+  }
+
   .flatpickr-time {
     .flatpickr-am-pm {
       color: #7266ed;

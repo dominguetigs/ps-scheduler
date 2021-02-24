@@ -22,16 +22,14 @@
     <mat-form-field fxFlex>
       <mat-label>Starts at</mat-label>
       <input
-        type="text"
         matInput
+        type="text"
         mwlFlatpickr
         [(ngModel)]="dialogData.start"
         (ngModelChange)="calendarInstance.refresh.next()"
-        [allowInput]="false"
         [altInput]="true"
         [convertModelValue]="true"
         [enableTime]="true"
-        [disableMobile]="true"
         dateFormat="Y-m-dTH:i"
         altFormat="F j, Y H:i"
         placeholder="Not set"
@@ -40,16 +38,14 @@
     <mat-form-field fxFlex>
       <mat-label>Ends at</mat-label>
       <input
-        type="text"
         matInput
+        type="text"
         mwlFlatpickr
         [(ngModel)]="dialogData.end"
         (ngModelChange)="calendarInstance.refresh.next()"
-        [allowInput]="false"
         [altInput]="true"
         [convertModelValue]="true"
         [enableTime]="true"
-        [disableMobile]="true"
         dateFormat="Y-m-dTH:i"
         altFormat="F j, Y H:i"
         placeholder="Not set"
